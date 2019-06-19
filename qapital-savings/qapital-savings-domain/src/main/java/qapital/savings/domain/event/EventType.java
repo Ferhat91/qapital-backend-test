@@ -1,0 +1,16 @@
+package qapital.savings.domain.event;
+
+public enum EventType {
+  MANUAL,
+  STARTED,
+  STOPPED,
+  RULE_APPLICATION,
+  IFTTT_TRANSFER,
+  JOINED,
+  WITHDRAWL,
+  INTERNAL_TRANSFER,
+  CANCELLATION,
+  INCENTIVE_PAYOUT,
+  INTEREST
+}
+
