@@ -17,16 +17,32 @@
     </properties>
 
     <modules>
+        <module>qapital-broker</module>
         <module>qapital-savings</module>
+        <module>qapital-shady-transactions-stream</module>
         <module>qapital-transactions</module>
     </modules>
 
     <dependencies>
 
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
+
     </dependencies>
 
     <dependencyManagement>
         <dependencies>
+
+            <dependency>
+                <groupId>com.qapital.transactions</groupId>
+                <artifactId>qapital-transactions-domain</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+
             <dependency>
                 <groupId>com.qapital.transactions</groupId>
                 <artifactId>qapital-transactions-service</artifactId>

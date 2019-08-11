@@ -1,0 +1,5 @@
+kafka/event/publisher/KafkaEventPublisher.class
+kafka/event/publisher/EventPublisherConfiguration.class
+kafka/event/publisher/Initializable.class
+kafka/event/publisher/Producer.class
+kafka/event/publisher/EventPublisher.class

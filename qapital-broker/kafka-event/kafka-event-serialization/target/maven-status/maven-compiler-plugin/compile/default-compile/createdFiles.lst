@@ -1,0 +1,4 @@
+kafka/event/serialization/EventWrapperSerializer.class
+kafka/event/serialization/Serializer.class
+kafka/event/serialization/EventWrapperDeserializer.class
+kafka/event/serialization/ProtobufSerializer.class

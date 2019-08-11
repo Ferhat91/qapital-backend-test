@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      id: changelog-0.0
+      author: mall-coordinator
+      changes:
+        - createTable:
+            tableName: positions
+            columns:
+              - column:
+                  name: id
+                  type: integer
+              - column:
+                  name: floor
+                  type: integer
+              - column:
+                  name: latitude
+                  type: real
+              - column:
+                  name: longitude
+                  type: real

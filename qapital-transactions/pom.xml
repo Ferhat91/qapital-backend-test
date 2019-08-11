@@ -17,6 +17,7 @@
     </parent>
 
     <modules>
+        <module>qapital-transactions-dao</module>
         <module>qapital-transactions-domain</module>
         <module>qapital-transactions-main</module>
         <module>qapital-transactions-rest-service</module>
