@@ -19,7 +19,6 @@
     <modules>
         <module>qapital-broker</module>
         <module>qapital-savings</module>
-        <module>qapital-main</module>
         <module>qapital-transactions</module>
     </modules>
 

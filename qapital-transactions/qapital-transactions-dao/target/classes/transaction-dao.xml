@@ -21,13 +21,8 @@
         <property name="changeLog" value="${datasource.liquibase}" />
     </bean>
 
-    <bean id="jdbi" class="org.jdbi.v3.core.Jdbi">
-        <constructor-arg ref="dataSource"/>
-    </bean>
     <bean id="transactionDao" class="qapital.transactions.dao.TransactionDaoImpl">
-        <constructor-arg ref="jdbi"/>
+        <constructor-arg ref="dataSource"/>
     </bean>
 
 </beans>
-
-

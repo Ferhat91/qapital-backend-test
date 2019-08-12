@@ -5,6 +5,8 @@ import org.jdbi.v3.core.Jdbi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import qapital.transactions.domain.Transaction;
+
+import javax.sql.DataSource;
 import java.util.List;
 import java.util.Objects;
 import static java.util.Objects.isNull;
@@ -15,8 +17,8 @@ public class TransactionDaoImpl implements TransactionDao {
 
     private Jdbi jdbi;
 
-    public TransactionDaoImpl(Jdbi jdbi) {
-        this.jdbi = Objects.requireNonNull(jdbi, "jdbi");
+    public TransactionDaoImpl(DataSource dataSource) {
+        this.jdbi = Objects.requireNonNull(Jdbi.create(dataSource), "dataSource");
     }
 
     @Override
