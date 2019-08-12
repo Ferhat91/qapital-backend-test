@@ -1,5 +1,7 @@
 package qapital.savings.domain.rule;
 
+import com.google.common.collect.Lists;
+
 import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
@@ -15,19 +17,19 @@ public class SavingsRule implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Double  		amount;
-	private Long 				id;
+	private Long 			id;
 	private String  		placeDescription;
 	private RuleType 		ruleType;
-	private List<Long>  savingsGoalIds;
+	private List<Long>  	savingsGoalIds;
 	private Status 			status;
-	private Long 				userId;
+	private Long 			userId;
 
 	private SavingsRule(Builder builder) {
 		this.amount = builder.amount;
 		this.id = builder.id;
 		this.placeDescription = builder.placeDescription;
 		this.ruleType = builder.ruleType;
-		this.savingsGoalIds = isNull(builder.savingsGoalIds) ? List.of() : builder.savingsGoalIds;
+		this.savingsGoalIds = isNull(builder.savingsGoalIds) ? Lists.newArrayList() : builder.savingsGoalIds;
 		this.status = isNull(builder.status) ? Status.ACTIVE : builder.status;
 		this.userId = builder.userId;
 	}
@@ -98,7 +100,7 @@ public class SavingsRule implements Serializable {
 		}
 
 		public Builder withSavingGoalIds(Long... savingGoalIds){
-			this.savingsGoalIds = List.of(savingGoalIds);
+			this.savingsGoalIds = Lists.newArrayList(savingGoalIds);
 			return this;
 		}
 

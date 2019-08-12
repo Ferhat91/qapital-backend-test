@@ -17,9 +17,6 @@ public class KafkaEventSubscriber {
         this.consumer.init(eventSubscriberConfiguration.getBootStrapServers(),
                 eventSubscriberConfiguration.getClientId(),
                 eventSubscriberConfiguration.getGroupId(),
-                eventSubscriberConfiguration.getHeartbeatInterval(),
-                eventSubscriberConfiguration.getReconnectBackOffMax(),
-                eventSubscriberConfiguration.getReconnectBackOff(),
                 eventSubscriberConfiguration.getTopic());
     }
 }

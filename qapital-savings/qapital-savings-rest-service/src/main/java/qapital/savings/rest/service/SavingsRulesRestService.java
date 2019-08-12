@@ -6,19 +6,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import qapital.savings.domain.event.SavingsEvent;
-import qapital.savings.domain.rule.SavingsRule;
 import qapital.savings.service.SavingsRulesService;
 import java.util.List;
+import java.util.Objects;
 
 @RestController
-@RequestMapping("/api/savings/qapital.savings.domain.rule")
+@RequestMapping("/savings")
 public class SavingsRulesRestService {
 
     private final SavingsRulesService savingsRulesService;
 
     @Autowired
     public SavingsRulesRestService(SavingsRulesService savingsRulesService) {
-        this.savingsRulesService = savingsRulesService;
+        this.savingsRulesService = Objects.requireNonNull(savingsRulesService, "savingsRulesService");
     }
 
     @GetMapping("/execute-savings-rules/{userId}")

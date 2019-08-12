@@ -1,4 +1,5 @@
 /Users/ferhatb/qapital-backend-test/qapital-savings/qapital-savings-service/src/main/java/qapital/savings/service/StandardSavingsRulesServiceImpl.java
 /Users/ferhatb/qapital-backend-test/qapital-savings/qapital-savings-service/src/main/java/qapital/savings/service/SavingsRulesService.java
 /Users/ferhatb/qapital-backend-test/qapital-savings/qapital-savings-service/src/main/java/qapital/savings/service/SavingsRulesTemplate.java
+/Users/ferhatb/qapital-backend-test/qapital-savings/qapital-savings-service/src/main/java/qapital/savings/service/CreateSavingsEvent.java
 /Users/ferhatb/qapital-backend-test/qapital-savings/qapital-savings-service/src/main/java/qapital/savings/service/Mapper.java

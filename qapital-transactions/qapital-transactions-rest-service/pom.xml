@@ -18,7 +18,7 @@
     <dependencies>
         <dependency>
             <groupId>com.qapital.transactions</groupId>
-            <artifactId>qapital-transactions-domain</artifactId>
+            <artifactId>qapital-transactions-service</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

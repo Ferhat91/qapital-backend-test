@@ -21,6 +21,11 @@
             <artifactId>qapital-transactions-domain</artifactId>
             <version>${project.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.qapital.transactions</groupId>
+            <artifactId>qapital-transactions-dao</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

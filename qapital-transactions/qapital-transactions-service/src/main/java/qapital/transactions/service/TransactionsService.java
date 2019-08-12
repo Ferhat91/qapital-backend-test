@@ -6,5 +6,7 @@ import java.util.List;
 
 public interface TransactionsService {
 
-    List<Transaction> getLatestTransactionsForUser(Long userId);
+    List<Transaction> getTransactions(Long userId);
+
+    void storeTransaction(Transaction transaction);
 }

@@ -37,19 +37,4 @@ public class EventSubscriberConfiguration implements Configurable {
         return String.valueOf(properties.get(TOPIC));
     }
 
-    public Long getHeartbeatInterval(){
-        return (Long) properties.get(ConsumerConfig.HEARTBEAT_INTERVAL_MS_CONFIG);
-    }
-
-    public Long getPollTimeOut(){
-        return (Long)(properties.get(ConsumerConfig.MAX_POLL_INTERVAL_MS_CONFIG));
-    }
-
-    public Long getReconnectBackOffMax(){
-        return (Long) properties.get(ConsumerConfig.RECONNECT_BACKOFF_MAX_MS_CONFIG);
-    }
-
-    public Long getReconnectBackOff(){
-        return (Long) properties.get(ConsumerConfig.RECONNECT_BACKOFF_MS_CONFIG);
-    }
 }

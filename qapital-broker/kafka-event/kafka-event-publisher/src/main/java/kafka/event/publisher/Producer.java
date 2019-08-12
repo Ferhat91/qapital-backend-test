@@ -1,6 +1,5 @@
 package kafka.event.publisher;
 
-import com.google.common.base.MoreObjects;
 import com.qapital.broker.kafka.event.EventWrapperOuterClass;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -8,9 +7,6 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.Serializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
-
 import java.util.Objects;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
@@ -50,9 +46,6 @@ public class Producer implements AutoCloseable {
     public Producer(String bootstrapServers,
                     String clientId,
                     String topic,
-                    Integer batchSize,
-                    Integer reConnectBackOffMax,
-                    Integer reConnectBackOff,
                     Serializer<String> keySerializer,
                     Serializer<EventWrapperOuterClass.EventWrapper> valueSerializer) {
         this.topic = Objects.requireNonNull(topic, "topic");
@@ -60,9 +53,6 @@ public class Producer implements AutoCloseable {
         Properties configProperties = new Properties();
         configProperties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
         configProperties.put(ProducerConfig.CLIENT_ID_CONFIG, clientId);
-        configProperties.put(ProducerConfig.BATCH_SIZE_CONFIG, batchSize);
-        configProperties.put(ProducerConfig.RECONNECT_BACKOFF_MAX_MS_CONFIG, reConnectBackOffMax);
-        configProperties.put(ProducerConfig.RECONNECT_BACKOFF_MS_CONFIG, reConnectBackOff);
         this.producer = new KafkaProducer<>(configProperties, keySerializer, valueSerializer);
 
     }
@@ -79,44 +69,7 @@ public class Producer implements AutoCloseable {
         }
     }
 
-    /**
-     * Sends the message to the broker using a random routing value
-     *
-     * @param value
-     */
     public void publish(EventWrapperOuterClass.EventWrapper value) {
         producer.send(new ProducerRecord<String, EventWrapperOuterClass.EventWrapper>(this.topic, value));
     }
-
-    /**
-     * Sends the message to the broker using the mod(key,numberOfPartitions)
-     *
-     * @param key
-     * @param value
-     */
-    public void publish(String key, EventWrapperOuterClass.EventWrapper value) {
-        producer.send(new ProducerRecord<>(topic, key, value));
-    }
-
-    /**
-     * Sends the message to the broker using the provided partition id
-     *
-     * @param partition
-     * @param value
-     */
-    public void publish(Integer partition, EventWrapperOuterClass.EventWrapper value) {
-        producer.send(new ProducerRecord<>(topic, partition, null, value));
-    }
-
-    /**
-     * Sends the message to the broker using the provided partition id and key
-     *
-     * @param partition
-     * @param key
-     * @param value
-     */
-    public void publish(Integer partition, String key, EventWrapperOuterClass.EventWrapper value) {
-        producer.send(new ProducerRecord<>(topic, partition, key, value));
-    }
-
 }

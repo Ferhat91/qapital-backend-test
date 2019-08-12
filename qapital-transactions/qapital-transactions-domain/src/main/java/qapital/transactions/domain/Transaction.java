@@ -1,6 +1,7 @@
 package qapital.transactions.domain;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.time.LocalDate;
 
 public class Transaction implements Serializable {
@@ -8,15 +9,15 @@ public class Transaction implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Double      amount;
-    private LocalDate   date;
-    private String      placeDescription;
+    private Timestamp   executionTime;
+    private String      purchaseDescription;
     private Long        id;
     private Long        userId;
 
     private Transaction(Builder builder) {
         this.amount = builder.amount;
-        this.date = builder.date;
-        this.placeDescription = builder.placeDescription;
+        this.executionTime = builder.executionTime;
+        this.purchaseDescription = builder.purchaseDescription;
         this.id = builder.id;
         this.userId = builder.userId;
     }
@@ -32,14 +33,6 @@ public class Transaction implements Serializable {
         return amount;
     }
 
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public String getPlaceDescription() {
-        return placeDescription;
-    }
-
     public Long getId() {
         return id;
     }
@@ -48,11 +41,19 @@ public class Transaction implements Serializable {
         return userId;
     }
 
+    public Timestamp getExecutionTime() {
+        return executionTime;
+    }
+
+    public String getPurchaseDescription() {
+        return purchaseDescription;
+    }
+
     public static class Builder implements org.apache.commons.lang3.builder.Builder<Transaction>{
 
         private Double      amount;
-        private LocalDate   date;
-        private String      placeDescription;
+        private Timestamp   executionTime;
+        private String      purchaseDescription;
         private Long        id;
         private Long        userId;
 
@@ -62,13 +63,13 @@ public class Transaction implements Serializable {
             return this;
         }
 
-        public Builder withDate(LocalDate date){
-            this.date = date;
+        public Builder withExecutionTime(Timestamp executionTime){
+            this.executionTime = executionTime;
             return this;
         }
 
-        public Builder withPlaceDescription(String placeDescription){
-            this.placeDescription = placeDescription;
+        public Builder withPurchaseDescription(String purchaseDescription){
+            this.purchaseDescription = purchaseDescription;
             return this;
         }
 

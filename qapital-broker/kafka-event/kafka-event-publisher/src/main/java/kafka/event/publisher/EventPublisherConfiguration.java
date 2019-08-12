@@ -8,8 +8,8 @@ import static java.util.Objects.isNull;
 
 public class EventPublisherConfiguration implements Configurable {
 
-    private Map<String,?> properties;
     private static final String TOPIC = "topic";
+    private Map<String,?> properties;
 
     @Override
     public void configure(Map<String, ?> configurations) {

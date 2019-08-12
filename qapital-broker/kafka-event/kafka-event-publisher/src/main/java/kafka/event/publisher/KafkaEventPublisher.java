@@ -38,9 +38,6 @@ public class KafkaEventPublisher implements EventPublisher, AutoCloseable, Initi
                 eventPublisherConfiguration.getBootStrapServers(),
                 eventPublisherConfiguration.getClientId(),
                 eventPublisherConfiguration.getTopic(),
-                eventPublisherConfiguration.getBatchSize(),
-                eventPublisherConfiguration.getReConnectBackOffMax(),
-                eventPublisherConfiguration.getReConnectBackOff(),
                 new StringSerializer(),
                 new EventWrapperSerializer());
         return this;
@@ -76,6 +73,7 @@ public class KafkaEventPublisher implements EventPublisher, AutoCloseable, Initi
         }
 
         try {
+            LOGGER.info(String.format("producer=%s is succesfully publishing the event!", producer));
             producer.publish(eventWrapper);
         } catch (Exception e) {
             LOGGER.error(String.format("Failed sending event: producer=%s", producer), e);
