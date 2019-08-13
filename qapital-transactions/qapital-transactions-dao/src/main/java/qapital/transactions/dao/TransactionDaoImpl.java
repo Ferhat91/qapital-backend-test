@@ -26,7 +26,7 @@ public class TransactionDaoImpl implements TransactionDao {
         List<Transaction> transactions = Lists.newArrayList();
         if (!isNull(userId)) {
             transactions = jdbi.withExtension(TransactionDao.class, dao -> dao.getTransactions(userId));
-            LOGGER.info("Successfully fetched {} transactions for userId: {}", transactions.size(), userId);
+            LOGGER.info("Successfully fetched {} transaction(s) for userId: {}", transactions.size(), userId);
         }
         return transactions;
     }
@@ -34,12 +34,14 @@ public class TransactionDaoImpl implements TransactionDao {
     @Override
     public List<Transaction> getTransactions() {
         List<Transaction> transactions =  jdbi.withExtension(TransactionDao.class, TransactionDao::getTransactions);
-        LOGGER.info("Successfully fetched {} transactions", transactions.size());
+        LOGGER.info("Successfully fetched {} transaction(s)", transactions.size());
         return transactions;
     }
 
     @Override
     public void storeTransaction(Transaction transaction) {
         jdbi.useExtension(TransactionDao.class, dao -> storeTransaction(transaction));
+        LOGGER.info("Successfully persisted transaction {} for userId {} with the purchaseDescription ",
+                transaction.getId(), transaction.getUserId(), transaction.getPurchaseDescription()); //autoincrement id
     }
 }

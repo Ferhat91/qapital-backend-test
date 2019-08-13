@@ -1,33 +1,21 @@
 package qapital.transactions.domain;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
 import java.io.Serializable;
 import java.sql.Timestamp;
-import javax.persistence.Id;
 
-@Entity
-@Table(name= "transaction")
 public class Transaction implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Column(name="amount")
     private Double      amount;
 
-    @Column(name="execution_time")
     private Timestamp   executionTime;
 
-    @Column(name="purchase_description")
     private String      purchaseDescription;
 
-    @Column(name="id")
-    @Id
     private Long        id;
 
-    @Column(name="user_id")
     private Long        userId;
 
     private Transaction(Builder builder) {
