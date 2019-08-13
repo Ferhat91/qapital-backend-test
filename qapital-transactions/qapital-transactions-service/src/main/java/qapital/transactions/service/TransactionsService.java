@@ -8,5 +8,7 @@ public interface TransactionsService {
 
     List<Transaction> getTransactions(Long userId);
 
+    List<Transaction> getTransactions();
+
     void storeTransaction(Transaction transaction);
 }

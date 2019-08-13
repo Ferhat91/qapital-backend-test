@@ -42,7 +42,6 @@ public @interface BindTransaction {
                 q.bind(bind.value() + ".amount", transaction.getAmount());
                 q.bind(bind.value() + ".purchase_description", transaction.getPurchaseDescription());
                 q.bind(bind.value() + ".execution_time", transaction.getExecutionTime());
-
             };
         }
     }

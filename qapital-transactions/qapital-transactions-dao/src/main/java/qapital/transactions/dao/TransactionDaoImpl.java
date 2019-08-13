@@ -2,10 +2,11 @@ package qapital.transactions.dao;
 
 import com.google.common.collect.Lists;
 import org.jdbi.v3.core.Jdbi;
+import org.jdbi.v3.sqlobject.SqlObjectPlugin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import qapital.transactions.domain.Transaction;
-
 import javax.sql.DataSource;
 import java.util.List;
 import java.util.Objects;
@@ -17,8 +18,11 @@ public class TransactionDaoImpl implements TransactionDao {
 
     private Jdbi jdbi;
 
+    private NamedParameterJdbcTemplate template;
+
     public TransactionDaoImpl(DataSource dataSource) {
-        this.jdbi = Objects.requireNonNull(Jdbi.create(dataSource), "dataSource");
+        this.jdbi = Objects.requireNonNull(Jdbi.create(dataSource).installPlugin(new SqlObjectPlugin()), "dataSource");
+        this.template = new NamedParameterJdbcTemplate(dataSource);
     }
 
     @Override

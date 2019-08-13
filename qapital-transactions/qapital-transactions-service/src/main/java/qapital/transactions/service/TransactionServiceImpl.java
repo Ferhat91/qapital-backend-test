@@ -21,6 +21,12 @@ public class TransactionServiceImpl implements TransactionsService {
     }
 
     @Override
+    public List<Transaction> getTransactions() {
+        List<Transaction> transactions = transactionDao.getTransactions();
+        return transactions;
+    }
+
+    @Override
     public void storeTransaction(Transaction transaction) {
         transactionDao.storeTransaction(transaction);
     }

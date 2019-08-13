@@ -16,10 +16,9 @@
     </parent>
 
     <dependencies>
-        <dependency>
-            <groupId>com.qapital.transactions</groupId>
-            <artifactId>qapital-transactions-domain</artifactId>
-        </dependency>
+
+
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-parent</artifactId>
@@ -38,21 +37,34 @@
             <artifactId>sqlite-dialect</artifactId>
             <version>1.0</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
             <version>3.4.1</version>
         </dependency>
+
+
+        <dependency>
+            <groupId>com.qapital.transactions</groupId>
+            <artifactId>qapital-transactions-domain</artifactId>
+        </dependency>
+
+
+
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>28.0-jre</version>
         </dependency>
+
         <dependency>
             <groupId>org.jdbi</groupId>
-            <artifactId>jdbi3</artifactId>
-            <version>3.0.0-beta2</version>
+            <artifactId>jdbi</artifactId>
+            <version>2.78</version>
         </dependency>
 
         <dependency>
@@ -62,9 +74,9 @@
         </dependency>
 
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>2.0.0-alpha0</version>
+            <groupId>org.jdbi</groupId>
+            <artifactId>jdbi3-sqlite</artifactId>
+            <version>3.1.0</version>
         </dependency>
 
         <!--<dependency>-->
