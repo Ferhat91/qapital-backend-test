@@ -1,6 +1,5 @@
 package qapital.transactions.domain;
 
-
 import java.io.Serializable;
 import java.sql.Timestamp;
 
@@ -9,13 +8,9 @@ public class Transaction implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Double      amount;
-
     private Timestamp   executionTime;
-
     private String      purchaseDescription;
-
     private Long        id;
-
     private Long        userId;
 
     private Transaction(Builder builder) {

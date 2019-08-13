@@ -1,6 +1,6 @@
 qapital/transactions/dao/TransactionDaoImpl.class
+qapital/transactions/dao/mapper/TransactionDatabaseUtility.class
 qapital/transactions/dao/mapper/BindTransaction.class
 qapital/transactions/dao/TransactionDao.class
-qapital/transactions/dao/mapper/TransactionDatabaseConstants.class
 qapital/transactions/dao/mapper/TransactionMapper.class
 qapital/transactions/dao/mapper/BindTransaction$AccountBinderFactory.class

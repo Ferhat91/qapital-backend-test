@@ -2,6 +2,7 @@ package qapital.transactions.dao;
 
 import com.google.common.collect.Lists;
 import org.jdbi.v3.core.Jdbi;
+import org.jdbi.v3.sqlite3.SQLitePlugin;
 import org.jdbi.v3.sqlobject.SqlObjectPlugin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +19,9 @@ public class TransactionDaoImpl implements TransactionDao {
     private Jdbi jdbi;
 
     public TransactionDaoImpl(DataSource dataSource) {
-        this.jdbi = Objects.requireNonNull(Jdbi.create(dataSource).installPlugin(new SqlObjectPlugin()), "dataSource");
+        this.jdbi = Objects.requireNonNull(Jdbi.create(dataSource)
+                .installPlugin(new SQLitePlugin())
+                .installPlugin(new SqlObjectPlugin()), "dataSource");
     }
 
     @Override
@@ -40,7 +43,7 @@ public class TransactionDaoImpl implements TransactionDao {
 
     @Override
     public void storeTransaction(Transaction transaction) {
-        jdbi.useExtension(TransactionDao.class, dao -> storeTransaction(transaction));
+        jdbi.open().attach(TransactionDao.class).storeTransaction(transaction);
         LOGGER.info("Successfully persisted transaction {} for userId {} with the purchaseDescription ",
                 transaction.getId(), transaction.getUserId(), transaction.getPurchaseDescription()); //autoincrement id
     }

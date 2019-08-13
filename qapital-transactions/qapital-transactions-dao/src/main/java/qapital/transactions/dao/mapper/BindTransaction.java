@@ -41,7 +41,7 @@ public @interface BindTransaction {
                 q.bind(bind.value() + ".user_id", transaction.getUserId());
                 q.bind(bind.value() + ".amount", transaction.getAmount());
                 q.bind(bind.value() + ".purchase_description", transaction.getPurchaseDescription());
-                q.bind(bind.value() + ".execution_time", transaction.getExecutionTime());
+                q.bind(bind.value() + ".execution_time", TransactionDatabaseUtility.formatTimestampIfPresent((transaction.getExecutionTime())));
             };
         }
     }
