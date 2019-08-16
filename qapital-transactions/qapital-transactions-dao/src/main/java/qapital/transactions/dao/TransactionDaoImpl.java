@@ -1,6 +1,5 @@
 package qapital.transactions.dao;
 
-import com.google.common.collect.Lists;
 import org.jdbi.v3.core.Jdbi;
 import org.jdbi.v3.sqlite3.SQLitePlugin;
 import org.jdbi.v3.sqlobject.SqlObjectPlugin;
@@ -10,7 +9,6 @@ import qapital.transactions.domain.Transaction;
 import javax.sql.DataSource;
 import java.util.List;
 import java.util.Objects;
-import static java.util.Objects.isNull;
 
 public class TransactionDaoImpl implements TransactionDao {
 
@@ -26,11 +24,8 @@ public class TransactionDaoImpl implements TransactionDao {
 
     @Override
     public List<Transaction> getTransactions(Long userId) {
-        List<Transaction> transactions = Lists.newArrayList();
-        if (!isNull(userId)) {
-            transactions = jdbi.withExtension(TransactionDao.class, dao -> dao.getTransactions(userId));
-            LOGGER.info("Successfully fetched {} transaction(s) for userId: {}", transactions.size(), userId);
-        }
+        List<Transaction> transactions = jdbi.withExtension(TransactionDao.class, dao -> dao.getTransactions(userId));
+        LOGGER.info("Successfully fetched {} transaction(s) for userId: {}", transactions.size(), userId);
         return transactions;
     }
 
@@ -43,8 +38,11 @@ public class TransactionDaoImpl implements TransactionDao {
 
     @Override
     public void storeTransaction(Transaction transaction) {
+        persistTransactions(transaction);
+    }
+
+    private void persistTransactions(Transaction transaction){
+        LOGGER.info("Storing transaction {} for userId {}", transaction.getId(), transaction.getUserId());
         jdbi.open().attach(TransactionDao.class).storeTransaction(transaction);
-        LOGGER.info("Successfully persisted transaction {} for userId {} with the purchaseDescription ",
-                transaction.getId(), transaction.getUserId(), transaction.getPurchaseDescription()); //autoincrement id
     }
 }

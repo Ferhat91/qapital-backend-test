@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Surefire suite" duration-ms="12952" started-at="2019-08-16T14:43:26Z" finished-at="2019-08-16T14:43:39Z">
+    <groups>
+    </groups>
+    <test name="Surefire test" duration-ms="12952" started-at="2019-08-16T14:43:26Z" finished-at="2019-08-16T14:43:39Z">
+      <class name="TransactionIntegrationsTest">
+        <test-method status="PASS" signature="$spock_feature_1_0(TransactionIntegrationsTest)" name="$spock_feature_1_0" duration-ms="12363" started-at="2019-08-16T14:43:26Z" finished-at="2019-08-16T14:43:39Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- $spock_feature_1_0 -->
+        <test-method status="PASS" signature="$spock_feature_1_1(TransactionIntegrationsTest)" name="$spock_feature_1_1" duration-ms="12445" started-at="2019-08-16T14:43:26Z" finished-at="2019-08-16T14:43:39Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- $spock_feature_1_1 -->
+      </class> <!-- TransactionIntegrationsTest -->
+    </test> <!-- Surefire test -->
+  </suite> <!-- Surefire suite -->
+</testng-results>

@@ -9,6 +9,6 @@
         <constructor-arg ref="transactionService"/>
     </bean>
 
-    <import resource="classpath:transaction-dao.xml" />
+    <import resource="classpath:transactions-dao.xml" />
 
 </beans>

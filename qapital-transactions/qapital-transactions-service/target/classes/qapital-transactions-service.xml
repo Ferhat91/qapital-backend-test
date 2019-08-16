@@ -5,10 +5,10 @@
        xsi:schemaLocation = "http://www.springframework.org/schema/beans
    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-    <bean id="transactionRestService" class="qapital.transactions.rest.service.TransactionsRestService">
-        <constructor-arg ref="transactionService"/>
+    <bean id="transactionService" class="qapital.transactions.service.TransactionServiceImpl" lazy-init="true">
+        <constructor-arg ref="transactionDao"/>
     </bean>
 
-    <import resource="classpath:mall-coordinator-service.xml" />
+    <import resource="classpath:transactions-dao.xml" />
 
 </beans>
