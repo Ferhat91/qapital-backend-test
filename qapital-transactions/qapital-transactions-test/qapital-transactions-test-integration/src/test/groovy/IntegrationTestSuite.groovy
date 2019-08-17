@@ -6,6 +6,7 @@ import org.springframework.boot.test.web.client.TestRestTemplate
 import org.springframework.http.HttpEntity
 import org.springframework.http.HttpHeaders
 import org.springframework.http.MediaType
+import org.springframework.http.ResponseEntity
 import spock.lang.Specification
 
 class IntegrationTestSuite extends Specification implements TestDataContext {
@@ -17,6 +18,10 @@ class IntegrationTestSuite extends Specification implements TestDataContext {
 
     static String PORT = "8080"
 
+    def cleanup() {
+        restTemplate.delete(createUriWithPort()+ "/transactions", String)
+    }
+
     static createJsonRequest(requestBody) {
         HttpHeaders headers = new HttpHeaders()
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -24,7 +29,6 @@ class IntegrationTestSuite extends Specification implements TestDataContext {
         return new HttpEntity<>(json, headers);
     }
 
-    static createUriWithPort() {
-        return "http://" + LOCALHOST + ":" + PORT;
+    static createUriWithPort() { return "http://" + LOCALHOST + ":" + PORT;
     }
 }

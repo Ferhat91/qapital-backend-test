@@ -8,13 +8,15 @@ public class Transaction implements Serializable{
     private static final long serialVersionUID = 1L;
 
     private Double      amount;
-    private Timestamp   executionTime;
+    private String      currency;
+    private String      executionTime;
     private String      purchaseDescription;
     private Long        id;
     private Long        userId;
 
     private Transaction(Builder builder) {
         this.amount = builder.amount;
+        this.currency = builder.currency;
         this.executionTime = builder.executionTime;
         this.purchaseDescription = builder.purchaseDescription;
         this.id = builder.id;
@@ -32,6 +34,10 @@ public class Transaction implements Serializable{
         return amount;
     }
 
+    public String getCurrency() {
+        return currency;
+    }
+
     public Long getId() {
         return id;
     }
@@ -40,7 +46,7 @@ public class Transaction implements Serializable{
         return userId;
     }
 
-    public Timestamp getExecutionTime() {
+    public String getExecutionTime() {
         return executionTime;
     }
 
@@ -51,24 +57,29 @@ public class Transaction implements Serializable{
     public static class Builder implements org.apache.commons.lang3.builder.Builder<Transaction>{
 
         private Double      amount;
-        private Timestamp   executionTime;
+        private String      currency;
+        private String      executionTime;
         private String      purchaseDescription;
         private Long        id;
         private Long        userId;
-
 
         public Builder withAmount(Double amount){
             this.amount = amount;
             return this;
         }
 
-        public Builder withExecutionTime(Timestamp executionTime){
-            this.executionTime = executionTime;
+        public Builder withCurrency(String currency){
+            this.currency = currency;
             return this;
         }
 
         public Builder withPurchaseDescription(String purchaseDescription){
             this.purchaseDescription = purchaseDescription;
+            return this;
+        }
+
+        public Builder withExecutionTime(String executionTime){
+            this.executionTime = executionTime;
             return this;
         }
 

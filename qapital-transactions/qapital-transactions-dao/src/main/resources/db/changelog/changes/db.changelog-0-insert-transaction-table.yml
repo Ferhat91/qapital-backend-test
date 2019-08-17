@@ -16,6 +16,9 @@ databaseChangeLog:
                   name: amount
                   type: integer
               - column:
+                  name: currency
+                  type: text
+              - column:
                   name: purchase_description
                   type: text
               - column:

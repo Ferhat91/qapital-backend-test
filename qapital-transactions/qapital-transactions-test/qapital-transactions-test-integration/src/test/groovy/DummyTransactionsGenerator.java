@@ -1,5 +1,3 @@
-package qapital.transactions.service;
-
 import com.google.common.collect.Lists;
 import qapital.transactions.domain.Transaction;
 import java.time.LocalDate;

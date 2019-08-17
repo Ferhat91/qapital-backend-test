@@ -15,6 +15,8 @@ public class TransactionDatabaseUtility {
 
     public static final String AMOUNT = "amount";
 
+    public static final String CURRENCY = "currency";
+
     public static final String EXECUTION_TIME = "execution_time";
 
     public static final String ID = "id";
