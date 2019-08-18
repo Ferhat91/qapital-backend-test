@@ -30,6 +30,13 @@ public class TransactionDaoImpl implements TransactionDao {
     }
 
     @Override
+    public Transaction getTransaction(Long userId, Long transactionId) {
+        Transaction transaction = jdbi.withExtension(TransactionDao.class, dao -> dao.getTransaction(userId, transactionId));
+        LOGGER.info("Successfully fetched {} transaction: {} for userId: {}", transaction.getId(), transaction.getUserId());
+        return transaction;
+    }
+
+    @Override
     public List<Transaction> getTransactions() {
         List<Transaction> transactions =  jdbi.withExtension(TransactionDao.class, TransactionDao::getTransactions);
         LOGGER.info("Successfully fetched {} transaction(s)", transactions.size());

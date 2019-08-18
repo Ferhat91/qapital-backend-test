@@ -36,6 +36,20 @@ public class TransactionsRestService {
     }
 
     @GetMapping
+    @RequestMapping("/{userId}/{transactionId}")
+    ResponseEntity<Transaction> getTransaction(@PathVariable("userId") Long userId,
+                                               @PathVariable("transactionId") Long transactionId){
+        if(!isNull(userId) && !isNull(transactionId)){
+            LOGGER.info("Attempt to fetch transaction: {} for userId: {}", transactionId,userId);
+            Transaction transactions = transactionsService.getTransaction(userId, transactionId);
+            return ResponseEntity.ok(transactions);
+        }else{
+            LOGGER.info("Cannot fetch transaction: {} for userId: {}", transactionId, userId);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @GetMapping
     ResponseEntity<List<Transaction>> getTransactions(){
         LOGGER.info("Attempt to fetch transaction(s)");
         List<Transaction> transactions = transactionsService.getTransactions();

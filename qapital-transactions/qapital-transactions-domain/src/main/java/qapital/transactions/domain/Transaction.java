@@ -1,14 +1,13 @@
 package qapital.transactions.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
-import java.sql.Timestamp;
 
 public class Transaction implements Serializable{
 
     private static final long serialVersionUID = 1L;
 
     private Double      amount;
-    private String      currency;
     private String      executionTime;
     private String      purchaseDescription;
     private Long        id;
@@ -16,7 +15,6 @@ public class Transaction implements Serializable{
 
     private Transaction(Builder builder) {
         this.amount = builder.amount;
-        this.currency = builder.currency;
         this.executionTime = builder.executionTime;
         this.purchaseDescription = builder.purchaseDescription;
         this.id = builder.id;
@@ -32,10 +30,6 @@ public class Transaction implements Serializable{
 
     public Double getAmount() {
         return amount;
-    }
-
-    public String getCurrency() {
-        return currency;
     }
 
     public Long getId() {
@@ -56,20 +50,23 @@ public class Transaction implements Serializable{
 
     public static class Builder implements org.apache.commons.lang3.builder.Builder<Transaction>{
 
+        @JsonProperty       ("amount")
         private Double      amount;
-        private String      currency;
+
+        @JsonProperty       ("executionTime")
         private String      executionTime;
+
+        @JsonProperty       ("purchaseDescription")
         private String      purchaseDescription;
+
+        @JsonProperty       ("id")
         private Long        id;
+
+        @JsonProperty       ("userId")
         private Long        userId;
 
         public Builder withAmount(Double amount){
             this.amount = amount;
-            return this;
-        }
-
-        public Builder withCurrency(String currency){
-            this.currency = currency;
             return this;
         }
 

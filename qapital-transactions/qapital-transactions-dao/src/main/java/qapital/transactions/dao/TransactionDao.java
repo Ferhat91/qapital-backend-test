@@ -15,6 +15,9 @@ public interface TransactionDao {
     @SqlQuery("SELECT * FROM 'transaction' WHERE user_id = :userId")
     List<Transaction> getTransactions(@Bind("userId") Long userId);
 
+    @SqlQuery("SELECT * FROM 'transaction' WHERE user_id = :userId AND id = :id")
+    Transaction getTransaction(@Bind("userId") Long userId, @Bind("id") Long transactionId);
+
     @SqlQuery("SELECT * FROM 'transaction'")
     List<Transaction> getTransactions();
 

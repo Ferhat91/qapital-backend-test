@@ -21,6 +21,12 @@ public class TransactionServiceImpl implements TransactionsService {
     }
 
     @Override
+    public Transaction getTransaction(Long userId, Long transactionId) {
+        Transaction transaction = transactionDao.getTransaction(userId,transactionId);
+        return transaction;
+    }
+
+    @Override
     public List<Transaction> getTransactions() {
         List<Transaction> transactions = transactionDao.getTransactions();
         return transactions;

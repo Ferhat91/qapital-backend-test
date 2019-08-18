@@ -1,11 +1,11 @@
-
+import org.json.JSONObject
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.skyscreamer.jsonassert.JSONAssert
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.HttpEntity
 import org.springframework.http.ResponseEntity
 import org.springframework.test.context.junit4.SpringRunner
-import java.sql.Timestamp
 import static org.springframework.http.HttpStatus.CREATED
 import qapital.transactions.main.TransactionsApp
 import static org.springframework.http.HttpStatus.OK
@@ -19,50 +19,46 @@ class TransactionIntegrationsTest extends IntegrationTestSuite {
     @Test
     def "Should be able to fetch all transactions GET /transactions"() {
 
-        when:"a transaction is persisted"
+        when: "a transaction is persisted"
 
-            def transaction = makeTransaction()
+        def transaction = makeTransaction()
 
-            HttpEntity<String> transactionJsonRequest = createJsonRequest(transaction)
+        HttpEntity<String> transactionJsonRequest = createJsonRequest(transaction)
 
-            ResponseEntity<String> insertResponse = restTemplate.postForEntity(createUriWithPort()+ "/transactions", transactionJsonRequest, String)
+        ResponseEntity<String> insertResponse = restTemplate.postForEntity(createUriWithPort() + "/transactions", transactionJsonRequest, String)
 
-            assert insertResponse.statusCode == CREATED
+        assert insertResponse.statusCode == CREATED
 
-        then:"all transactions are fetched"
+        then: "all transactions are fetched"
 
-            ResponseEntity<String> getResponse =
-                    restTemplate.getForEntity(createUriWithPort()+ "/transactions", String)
+        ResponseEntity<String> getResponse =
+                restTemplate.getForEntity(createUriWithPort() + "/transactions", String)
 
-             assert getResponse.statusCode == OK
+        assert getResponse.statusCode == OK
     }
 
     @Test
-    def "Should be able to fetch all transactions for userId GET /transactions/{userId}"() {
+    def "Should be able to fetch all transactions for userId GET /transactions/{userId}/{transactionId}"() {
 
-        when:"a transaction is persisted"
+        when: "a transaction is persisted"
 
-            def transaction = makeTransaction()
+        def transaction = makeTransaction()
+        def userId = transaction.userId
+        def transactionId = transaction.id
 
-            def userId = transaction.userId
+        HttpEntity<String> transactionJsonRequest = createJsonRequest(transaction)
 
-            HttpEntity<String> transactionJsonRequest = createJsonRequest(transaction)
+        ResponseEntity<String> insertResponse =
+                restTemplate.postForEntity(createUriWithPort() + "/transactions", transactionJsonRequest, String)
 
-            ResponseEntity<String> insertResponse =
-                restTemplate.postForEntity(createUriWithPort()+ "/transactions", transactionJsonRequest, String)
-
-            assert insertResponse.statusCode == CREATED
+        assert insertResponse.statusCode == CREATED
 
         then:"all transactions are fetched for ${userId}"
 
-            ResponseEntity<List> getResponse =
-                restTemplate.getForEntity(createUriWithPort()+ "/transactions/${userId}", List)
+        ResponseEntity<String> getResponse = restTemplate.getForEntity(createUriWithPort() + "/transactions/${userId}/${transactionId}", String)
 
-            assert getResponse.statusCode == OK
-            assert getResponse.body.userId.get(0) == userId as Integer
-            assert getResponse.body.id.get(0) == transaction.id as Integer
-            assert getResponse.body.purchaseDescription.get(0) == transaction.purchaseDescription as String
-            assert getResponse.body.executionTime.get(0) == transaction.executionTime as String
-            assert getResponse.body.amount.get(0) == transaction.amount as Double
+        assert getResponse.statusCode == OK
+        JSONObject actual = makeJSONActual(transaction)
+        JSONAssert.assertEquals(getResponse.body, actual, false)
     }
 }
