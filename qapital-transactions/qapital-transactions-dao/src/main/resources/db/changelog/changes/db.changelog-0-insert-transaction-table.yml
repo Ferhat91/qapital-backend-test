@@ -16,7 +16,7 @@ databaseChangeLog:
                   name: amount
                   type: integer
               - column:
-                  name: purchase_description
+                  name: description
                   type: text
               - column:
                   name: execution_time

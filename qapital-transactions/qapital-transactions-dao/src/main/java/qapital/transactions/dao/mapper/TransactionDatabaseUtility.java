@@ -8,7 +8,7 @@ public class TransactionDatabaseUtility {
 
     public static final String ID = "id";
 
-    public static final String PURCHASE_DESCRIPTION = "purchase_description";
+    public static final String PURCHASE_DESCRIPTION = "description";
 
     public static final String USER_ID = "user_id";
 

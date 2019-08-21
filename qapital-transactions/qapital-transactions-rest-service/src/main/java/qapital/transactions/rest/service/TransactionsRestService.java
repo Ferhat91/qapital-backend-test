@@ -22,6 +22,25 @@ public class TransactionsRestService {
         this.transactionsService = transactionsService;
     }
 
+    @PostMapping
+    ResponseEntity<String> storeTransaction(@RequestBody Transaction transaction){
+        if(!isNull(transaction)){
+            LOGGER.info("Attempt to persist transaction");
+            transactionsService.storeTransaction(transaction);
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } else{
+            LOGGER.info("Cannot persist null transaction!");
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @GetMapping
+    ResponseEntity<List<Transaction>> getTransactions(){
+        LOGGER.info("Attempt to fetch transaction(s)");
+        List<Transaction> transactions = transactionsService.getTransactions();
+        return ResponseEntity.ok(transactions);
+    }
+
     @GetMapping
     @RequestMapping("/{userId}")
     ResponseEntity<List<Transaction>> getTransactions(@PathVariable("userId") Long id){
@@ -45,25 +64,6 @@ public class TransactionsRestService {
             return ResponseEntity.ok(transactions);
         }else{
             LOGGER.info("Cannot fetch transaction: {} for userId: {}", transactionId, userId);
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-    }
-
-    @GetMapping
-    ResponseEntity<List<Transaction>> getTransactions(){
-        LOGGER.info("Attempt to fetch transaction(s)");
-        List<Transaction> transactions = transactionsService.getTransactions();
-        return ResponseEntity.ok(transactions);
-    }
-
-    @PostMapping
-    ResponseEntity<String> storeTransaction(@RequestBody Transaction transaction){
-        if(!isNull(transaction)){
-            LOGGER.info("Attempt to persist transaction");
-            transactionsService.storeTransaction(transaction);
-            return new ResponseEntity<>(HttpStatus.CREATED);
-        } else{
-            LOGGER.info("Cannot persist null transaction!");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }

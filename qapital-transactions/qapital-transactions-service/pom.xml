@@ -21,11 +21,13 @@
             <artifactId>qapital-transactions-domain</artifactId>
             <version>${project.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.qapital.transactions</groupId>
             <artifactId>qapital-transactions-dao</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.qapital.kafka</groupId>
+            <artifactId>kafka-event-publisher</artifactId>
+        </dependency>
     </dependencies>
-
 </project>

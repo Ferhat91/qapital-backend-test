@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ImportResource;
 
 @SpringBootApplication
-@ImportResource({"classpath:transactions-rest-service.xml"})
+@ImportResource({"classpath:qapital-transactions-rest-service.xml"})
 public class TransactionsApp {
 
     public static void main(String[] args) {

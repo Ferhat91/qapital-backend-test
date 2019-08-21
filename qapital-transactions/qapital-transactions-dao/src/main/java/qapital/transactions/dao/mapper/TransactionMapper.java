@@ -14,7 +14,7 @@ public class TransactionMapper  implements RowMapper<Transaction> {
                 .withId(rs.getLong(TransactionDatabaseUtility.ID))
                 .withUserId(rs.getLong(TransactionDatabaseUtility.USER_ID))
                 .withAmount(rs.getDouble(TransactionDatabaseUtility.AMOUNT))
-                .withPurchaseDescription(rs.getString(TransactionDatabaseUtility.PURCHASE_DESCRIPTION))
+                .withdDescription(rs.getString(TransactionDatabaseUtility.PURCHASE_DESCRIPTION))
                 .withExecutionTime(rs.getString(TransactionDatabaseUtility.EXECUTION_TIME))
                 .build();
     }

@@ -1,8 +1,9 @@
 package qapital.transactions.service;
 
+import qapital.broker.kafka.event.publisher.EventPublisher;
+import org.springframework.transaction.annotation.Transactional;
 import qapital.transactions.dao.TransactionDao;
 import qapital.transactions.domain.Transaction;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -10,8 +11,20 @@ public class TransactionServiceImpl implements TransactionsService {
 
     private TransactionDao transactionDao;
 
-    public TransactionServiceImpl(TransactionDao transactionDao) {
+    private EventPublisher eventPublisher;
+
+    public TransactionServiceImpl(TransactionDao transactionDao, EventPublisher eventPublisher) {
         this.transactionDao = Objects.requireNonNull(transactionDao, "transactionDao");
+        this.eventPublisher = Objects.requireNonNull(eventPublisher,"eventPublisher");
+    }
+
+    @Override
+    @Transactional
+    public void storeTransaction(Transaction transaction) {
+        transactionDao.storeTransaction(transaction);
+        eventPublisher.publish(com.qapital.transaction.event.Transaction
+                .TransactionCreatedEvent.newBuilder().setId(mapLong(transaction.getId()))
+                .build());
     }
 
     @Override
@@ -32,8 +45,7 @@ public class TransactionServiceImpl implements TransactionsService {
         return transactions;
     }
 
-    @Override
-    public void storeTransaction(Transaction transaction) {
-        transactionDao.storeTransaction(transaction);
+    private com.google.protobuf.Int64Value mapLong(Long longValue){
+        return com.google.protobuf.Int64Value.newBuilder().setValue(longValue).build();
     }
 }

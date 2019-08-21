@@ -10,12 +10,6 @@
 
     <packaging>pom</packaging>
 
-    <parent>
-        <groupId>com.qapital</groupId>
-        <artifactId>qapital-backend-test</artifactId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
-
     <modules>
         <module>qapital-transactions-dao</module>
         <module>qapital-transactions-domain</module>
@@ -45,6 +39,12 @@
 
     <dependencyManagement>
         <dependencies>
+
+            <dependency>
+                <groupId>com.qapital.transactions</groupId>
+                <artifactId>qapital-transactions-api-specs</artifactId>
+                <version>${project.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>com.qapital.transactions</groupId>
@@ -117,10 +117,11 @@
             </dependency>
 
             <dependency>
-                <groupId>org.hibernate.dialect</groupId>
-                <artifactId>sqlite-dialect</artifactId>
-                <version>0.1.0</version>
+                <groupId>com.qapital.kafka</groupId>
+                <artifactId>kafka-event-publisher</artifactId>
+                <version>1.0-SNAPSHOT</version>
             </dependency>
+
             <dependency>
                 <groupId>org.hibernate</groupId>
                 <artifactId>hibernate-core</artifactId>
@@ -128,5 +129,19 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

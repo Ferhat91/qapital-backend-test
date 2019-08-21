@@ -19,21 +19,21 @@ trait TestDataContext {
     static makeTransaction() {
         def description = transactionDescriptions.get(getRandomIntegerInRange(0, transactionDescriptions.size() - 1))
         return [
-                id                 : uniqueRandomNumeric(getRandomIntegerInRange(2,4)),
-                userId             : getRandomIntegerInRange(1,10),
-                executionTime      : new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Timestamp.from(Instant.now())),
-                amount             : description == "Salary" ? generatePositiveRandomDouble() : generateNegativeRandomDouble(),
-                purchaseDescription: description
+                id           : uniqueRandomNumeric(getRandomIntegerInRange(2, 4)),
+                userId       : getRandomIntegerInRange(1, 10),
+                executionTime: new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Timestamp.from(Instant.now())),
+                amount       : description == "Salary" ? generatePositiveRandomDouble() : generateNegativeRandomDouble(),
+                description  : description
         ]
     }
 
-    static JSONObject makeJSONActual(Object transaction){
+    static JSONObject makeJSONActual(Object transaction) {
         JSONObject actual = new JSONObject()
         actual.put("id", transaction.id as Long)
         actual.put("userId", transaction.userId as Long)
         actual.put("executionTime", transaction.executionTime)
         actual.put("amount", transaction.amount)
-        actual.put("purchaseDescription", transaction.purchaseDescription)
+        actual.put("description", transaction.description)
         return actual
     }
 

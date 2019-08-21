@@ -13,5 +13,4 @@ public interface TransactionsService {
     List<Transaction> getTransactions();
 
     void storeTransaction(Transaction transaction);
-
 }
