@@ -1,0 +1,23 @@
+databaseChangeLog:
+  - changeSet:
+      id: db.changelog-2.0
+      author: transaction-service
+      changes:
+        - createTable:
+            tableName: savings_goal
+            columns:
+              - column:
+                  name: id
+                  type: integer
+              - column:
+                  name: user_id
+                  type: integer
+              - column:
+                  name: savings_rule_id
+                  type: integer
+              - column:
+                  name: description
+                  type: text
+              - column:
+                  name: required_amount_to_achievement
+                  type: text

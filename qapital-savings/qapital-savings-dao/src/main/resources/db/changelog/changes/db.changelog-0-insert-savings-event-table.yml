@@ -1,0 +1,41 @@
+databaseChangeLog:
+  - changeSet:
+      id: db.changelog-0.0
+      author: transaction-service
+      changes:
+        - createTable:
+            tableName: savings_event
+            columns:
+              - column:
+                  name: id
+                  type: integer
+              - column:
+                  name: user_id
+                  type: integer
+              - column:
+                  name: trigger_id
+                  type: integer
+              - column:
+                  name: savings_goal_id
+                  type: integer
+              - column:
+                  name: savings_rule_id
+                  type: integer
+              - column:
+                  name: savings_transfer_id
+                  type: integer
+              - column:
+                  name: amount
+                  type: integer
+              - column:
+                  name: created
+                  type: text
+              - column:
+                  name: cancellation
+                  type: integer
+              - column:
+                  name: event_type
+                  type: integer
+              - column:
+                  name: rule_type
+                  type: integer

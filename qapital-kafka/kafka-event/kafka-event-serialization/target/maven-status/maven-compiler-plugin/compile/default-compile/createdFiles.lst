@@ -1,0 +1,6 @@
+qapital/broker/kafka/event/serialization/ValueMapper.class
+qapital/broker/kafka/event/serialization/Serializer.class
+qapital/broker/kafka/event/serialization/EventWrapperSerializer.class
+qapital/broker/kafka/event/serialization/EventWrapperDeserializer.class
+qapital/broker/kafka/event/serialization/Mapper.class
+qapital/broker/kafka/event/serialization/ProtobufSerializer.class

@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - changeSet:
+      id: db.changelog-3.0
+      author: transaction-service
+      changes:
+        - createTable:
+            tableName: savings_rule
+            columns:
+              - column:
+                  name: id
+                  type: integer
+              - column:
+                  name: rule_type
+                  type: integer

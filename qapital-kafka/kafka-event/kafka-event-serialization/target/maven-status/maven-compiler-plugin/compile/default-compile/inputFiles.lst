@@ -1,0 +1,6 @@
+/Users/ferhatb/qapital-backend-test/qapital-kafka/kafka-event/kafka-event-serialization/src/main/java/qapital/broker/kafka/event/serialization/EventWrapperSerializer.java
+/Users/ferhatb/qapital-backend-test/qapital-kafka/kafka-event/kafka-event-serialization/src/main/java/qapital/broker/kafka/event/serialization/ProtobufSerializer.java
+/Users/ferhatb/qapital-backend-test/qapital-kafka/kafka-event/kafka-event-serialization/src/main/java/qapital/broker/kafka/event/serialization/EventWrapperDeserializer.java
+/Users/ferhatb/qapital-backend-test/qapital-kafka/kafka-event/kafka-event-serialization/src/main/java/qapital/broker/kafka/event/serialization/Serializer.java
+/Users/ferhatb/qapital-backend-test/qapital-kafka/kafka-event/kafka-event-serialization/src/main/java/qapital/broker/kafka/event/serialization/Mapper.java
+/Users/ferhatb/qapital-backend-test/qapital-kafka/kafka-event/kafka-event-serialization/src/main/java/qapital/broker/kafka/event/serialization/ValueMapper.java

@@ -1,3 +1,0 @@
-databaseChangeLog:
-  - include:
-      file: db/changelog/changes/db.changelog-0-insert-savings-table.yml

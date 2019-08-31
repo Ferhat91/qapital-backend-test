@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      file: db/db.changelog/changes/db.db.changelog-0-insert-savings-event-table.yml
+  - include:
+      file: db/db.changelog/changes/db.db.changelog-1-insert-savings-rule-table.yml
+  - include:
+      file: db/db.changelog/changes/db.db.changelog-2-insert-savings-goal-table.yml

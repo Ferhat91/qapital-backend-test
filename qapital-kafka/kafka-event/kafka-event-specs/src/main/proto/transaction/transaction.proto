@@ -1,0 +1,33 @@
+syntax = "proto3";
+option java_package = "com.qapital.transaction.event";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+
+// This is not an event! It is a transaction itself which means that we would only publish the transactionId
+// and subscribe this on savings-service side for then using some kind of service registry for callin the transactions
+// api for fetching the actual transaction and finally process it into a savingsEvent. Short cut solution! Never do this for real!
+message TransactionCreatedEvent {
+
+    google.protobuf.DoubleValue amount = 1;
+    google.protobuf.Int64Value id = 2;
+    google.protobuf.Int64Value user_id = 3;
+    google.protobuf.StringValue description = 4;
+    google.protobuf.StringValue executionTime = 5;
+    Type type = 6;
+}
+
+enum Type {
+    MANUAL = 0;
+    STARTED = 1;
+    STOPPED = 2;
+    RULE_APPLICATION = 3;
+    IFTTT_TRANSFER = 4;
+    JOINED = 5;
+    WITHDRAWL = 6;
+    INTERNAL_TRANSFER = 7;
+    CANCELLATION = 8;
+    INCENTIVE_PAYOUT = 9;
+    INTEREST = 10;
+    UNKNOWN = 11;
+}

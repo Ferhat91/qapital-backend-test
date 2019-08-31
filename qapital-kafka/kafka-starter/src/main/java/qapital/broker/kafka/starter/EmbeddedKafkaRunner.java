@@ -1,11 +1,8 @@
-package com.so4it.test.kafka;
+package qapital.broker.kafka.starter;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * @author Magnus Poromaa {@literal <mailto:magnus.poromaa@so4it.com/>}
- */
 public class EmbeddedKafkaRunner {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(EmbeddedKafkaRunner.class);
@@ -14,17 +11,13 @@ public class EmbeddedKafkaRunner {
 
     private EmbeddedKafkaBroker embeddedKafkaBroker;
 
-    public int kafkaPort;
+    public Integer kafkaPort;
 
-    public int zookeeperPort;
+    public Integer zookeeperPort;
 
-    public EmbeddedKafkaRunner(int kafkaPort, int zookeeperPort) {
+    public EmbeddedKafkaRunner(Integer kafkaPort, Integer zookeeperPort) {
         this.kafkaPort = kafkaPort;
         this.zookeeperPort = zookeeperPort;
-    }
-
-    public static EmbeddedKafkaRunner of(int kafkaPort, int zookeeperPort) {
-        return new EmbeddedKafkaRunner(kafkaPort, zookeeperPort);
     }
 
     public EmbeddedKafkaRunner start() {
