@@ -25,7 +25,6 @@ public class TransactionMapper {
     }
 
     private static TransactionType map(com.qapital.transaction.event.Transaction.Type transactionType) {
-        TransactionType type = null;
         if (!isNull(transactionType)) {
             switch (transactionType) {
                 case MANUAL:
