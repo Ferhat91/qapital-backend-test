@@ -26,6 +26,12 @@ public class SavingsEventServiceImpl implements SavingsEventService {
     }
 
     @Override
+    public SavingsEvent getSavingsEventForTransaction(Long transactionId, Long userId) {
+        SavingsEvent savingsEvent = savingsEventDao.getSavingsEventForTransaction(transactionId, userId);
+        return savingsEvent;
+    }
+
+    @Override
     public void persistSavingsEvent(SavingsEvent savingsEvent) {
         savingsEventDao.persistSavingsEvent(savingsEvent);
     }

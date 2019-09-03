@@ -6,7 +6,6 @@ import org.jdbi.v3.sqlobject.SqlObjectPlugin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import qapital.savings.domain.event.SavingsEvent;
-
 import javax.sql.DataSource;
 import java.util.List;
 import java.util.Objects;
@@ -34,6 +33,13 @@ public class SavingsEventDaoImpl implements SavingsEventDao {
     public SavingsEvent getSavingsEvent(Long id, Long userId) {
         SavingsEvent savingsEvent = jdbi.withExtension(SavingsEventDao.class, dao -> dao.getSavingsEvent(id, userId));
         LOGGER.info("Successfully fetched savingEvent {} for user: {}", id, userId);
+        return savingsEvent;
+    }
+
+    @Override
+    public SavingsEvent getSavingsEventForTransaction(Long transactionId, Long userId) {
+        SavingsEvent savingsEvent = jdbi.withExtension(SavingsEventDao.class, dao -> dao.getSavingsEventForTransaction(transactionId, userId));
+        LOGGER.info("Successfully fetched savingEvent {} for user: {}", transactionId, userId);
         return savingsEvent;
     }
 

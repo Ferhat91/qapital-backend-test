@@ -9,5 +9,7 @@ public interface SavingsEventService {
 
     SavingsEvent getSavingsEvent(Long id, Long userId);
 
+    SavingsEvent getSavingsEventForTransaction(Long transactionId, Long userId);
+
     void persistSavingsEvent(SavingsEvent savingsEvent);
 }
