@@ -2,31 +2,38 @@ package qapital.savings.domain;
 
 import java.io.Serializable;
 
-public class Transaction implements Serializable{
+public class Transaction implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Double      amount;
-    private String      executionTime;
-    private String      description;
-    private Long        id;
-    private Long        userId;
+    private Double          amount;
+    private String          executionTime;
+    private String          description;
+    private Long            id;
+    private TransactionType transactionType;
+    private Long            userId;
 
     private Transaction(Builder builder) {
         this.amount = builder.amount;
         this.executionTime = builder.executionTime;
         this.description = builder.description;
         this.id = builder.id;
+        this.transactionType = builder.transactionType;
         this.userId = builder.userId;
     }
 
-    private Transaction(){
+    private Transaction() {
+    }
+
+    public TransactionType getTransactionType() {
+        return transactionType;
     }
 
     public String getDescription() {
         return description;
     }
-    public static Builder builder(){
+
+    public static Builder builder() {
         return new Builder();
     }
 
@@ -46,35 +53,41 @@ public class Transaction implements Serializable{
         return executionTime;
     }
 
-    public static class Builder implements org.apache.commons.lang3.builder.Builder<Transaction>{
+    public static class Builder implements org.apache.commons.lang3.builder.Builder<Transaction> {
 
-        private Double      amount;
-        private String      executionTime;
-        private String      description;
-        private Long        id;
-        private Long        userId;
+        private Double          amount;
+        private String          executionTime;
+        private String          description;
+        private Long            id;
+        private TransactionType transactionType;
+        private Long            userId;
 
-        public Builder withAmount(Double amount){
+        public Builder withAmount(Double amount) {
             this.amount = amount;
             return this;
         }
 
-        public Builder withDescription(String description){
+        public Builder withDescription(String description) {
             this.description = description;
             return this;
         }
 
-        public Builder withExecutionTime(String executionTime){
+        public Builder withExecutionTime(String executionTime) {
             this.executionTime = executionTime;
             return this;
         }
 
-        public Builder withId(Long id){
+        public Builder withId(Long id) {
             this.id = id;
             return this;
         }
 
-        public Builder withUserId(Long userId){
+        public Builder withTransactionType(TransactionType transactionType) {
+            this.transactionType = transactionType;
+            return this;
+        }
+
+        public Builder withUserId(Long userId) {
             this.userId = userId;
             return this;
         }
@@ -84,5 +97,4 @@ public class Transaction implements Serializable{
             return new Transaction(this);
         }
     }
-
 }

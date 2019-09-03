@@ -1,16 +1,14 @@
-package qapital.savings.service;
+package qapital.savings.service.rule;
 
-  import qapital.savings.domain.event.SavingsEvent;
-  import qapital.savings.domain.rule.SavingsRule;
-
-  import java.util.List;
+import qapital.savings.domain.rule.SavingsRule;
+import java.util.List;
+import java.util.Optional;
 
 public interface SavingsRulesService {
 
-    /**
-     * Executes the logic for given savings rule
-     * @param savingsRule the configured savings rule
-     * @return a list of savings events that are the result of the execution of the rule
-     */
-    List<SavingsEvent> getSavingsEvents(SavingsRule savingsRule);
+    List<SavingsRule> getSavingsRules(Long userId);
+
+    Optional<SavingsRule> getSavingsRule(Long userId, Long id);
+
+    void persistSavingsRule(SavingsRule savingsRule);
 }

@@ -1,4 +1,6 @@
-package com.so4it.common.builder;
+package qapital.savings.service.utility;
+
+import org.apache.commons.lang3.builder.Builder;
 
 /**
  * A clone builder is used to create a deep copy of an object that was previously built
@@ -20,8 +22,6 @@ package com.so4it.common.builder;
  * @implNote The class implementing a clone build MUST ensure that any attribute
  * it has that implements clone builder also is cloned and not just copied.
  *
- *
- * @author Magnus poromaa {@literal <mailto:magnus.poromaa@so4it.com/>}
  */
 public interface CloneBuilder<V extends Builder<?>> {
 

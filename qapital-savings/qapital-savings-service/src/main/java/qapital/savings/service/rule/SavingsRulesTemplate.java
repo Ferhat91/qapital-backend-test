@@ -1,4 +1,4 @@
-package qapital.savings.service;
+package qapital.savings.service.rule;
 
 import com.google.common.collect.Lists;
 import qapital.savings.domain.rule.RuleType;
@@ -25,7 +25,7 @@ public class  SavingsRulesTemplate {
       SavingsRule savingsRule = SavingsRule.builder()
               .withId(id)
               .withUserId(userId)
-              .withPlaceDescription(placeDescription)
+              .withDescription(placeDescription)
               .withRuleType(ruleType)
               .withAmount(amount)
               .build();

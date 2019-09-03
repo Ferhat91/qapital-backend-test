@@ -1,4 +1,4 @@
-package qapital.savings.service.event;
+package qapital.savings.service.utility;
 
 import java.util.concurrent.atomic.AtomicLong;
 

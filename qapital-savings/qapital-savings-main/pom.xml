@@ -18,7 +18,11 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter-jetty</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.qapital.savings</groupId>
+            <artifactId>qapital-savings-rest-service</artifactId>
         </dependency>
     </dependencies>
 </project>

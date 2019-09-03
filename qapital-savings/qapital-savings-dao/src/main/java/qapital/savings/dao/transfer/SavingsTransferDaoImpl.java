@@ -6,6 +6,7 @@ import org.jdbi.v3.sqlobject.SqlObjectPlugin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import qapital.savings.domain.transfer.SavingsTransfer;
+
 import javax.sql.DataSource;
 import java.util.List;
 import java.util.Objects;
@@ -33,5 +34,12 @@ public class SavingsTransferDaoImpl implements SavingsTransferDao {
         List<SavingsTransfer> savingsTransfers = jdbi.withExtension(SavingsTransferDao.class, dao -> dao.getSavingsTransfers(userId));
         LOGGER.info("Successfully fetched {} savingTransfer(s) for userId: {}", savingsTransfers.size(), userId);
         return savingsTransfers;
+    }
+
+    @Override
+    public SavingsTransfer getSavingsTransfer(Long id, Long userId) {
+        SavingsTransfer savingsTransfer = jdbi.withExtension(SavingsTransferDao.class, dao -> dao.getSavingsTransfer(id, userId));
+        LOGGER.info("Successfully fetched savingTransfer {} for userId: {}", id, userId);
+        return savingsTransfer;
     }
 }

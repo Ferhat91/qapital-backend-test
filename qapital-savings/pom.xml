@@ -10,24 +10,31 @@
 
     <packaging>pom</packaging>
 
-    <parent>
-        <groupId>com.qapital</groupId>
-        <artifactId>qapital-backend-test</artifactId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
-
     <modules>
+        <module>qapital-savings-dao</module>
         <module>qapital-savings-domain</module>
-        <module>qapital-savings-service</module>
-        <module>qapital-savings-rest-service</module>
         <module>qapital-savings-main</module>
+        <module>qapital-savings-rest-service</module>
+        <module>qapital-savings-service</module>
+        <module>qapital-savings-test</module>
     </modules>
 
-    <dependencies>
+    <properties>
+        <commons.lang.version>3.9</commons.lang.version>
+        <commonds.dbcp.version>1.4</commonds.dbcp.version>
+        <hibernate.core.version>5.4.3.Final</hibernate.core.version>
+        <maven.compiler.plugin.version>3.3</maven.compiler.plugin.version>
+        <spring.boot.version>2.1.6.RELEASE</spring.boot.version>
+        <spring.context.version>5.1.8.RELEASE</spring.context.version>
+        <sql.lite.version>3.28.0</sql.lite.version>
+        <hikari.jdbc.version>3.3.1</hikari.jdbc.version>
+    </properties>
 
+    <dependencies>
     </dependencies>
 
     <dependencyManagement>
+
         <dependencies>
             <dependency>
                 <groupId>com.qapital.savings</groupId>
@@ -36,8 +43,77 @@
             </dependency>
             <dependency>
                 <groupId>com.qapital.savings</groupId>
+                <artifactId>qapital-savings-dao</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.qapital.savings</groupId>
                 <artifactId>qapital-savings-service</artifactId>
                 <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.qapital.kafka</groupId>
+                <artifactId>kafka-event-subscriber</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.qapital.savings</groupId>
+                <artifactId>qapital-savings-rest-service</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- 3rd party dependenices -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-starter-tomcat</artifactId>
+                    </exclusion>
+                </exclusions>
+                <version>${spring.boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-jdbc</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-jpa</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-jetty</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-parent</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons.lang.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.xerial</groupId>
+                <artifactId>sqlite-jdbc</artifactId>
+                <version>${sql.lite.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate.dialect</groupId>
+                <artifactId>sqlite-dialect</artifactId>
+                <version>0.1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-core</artifactId>
+                <version>${hibernate.core.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -47,10 +123,13 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
             </plugin>
         </plugins>
     </build>
-
-
 
 </project>

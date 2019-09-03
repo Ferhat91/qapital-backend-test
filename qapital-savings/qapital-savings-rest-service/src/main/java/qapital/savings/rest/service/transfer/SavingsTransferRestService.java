@@ -11,10 +11,11 @@ import qapital.savings.service.transfer.SavingsTransferService;
 
 import java.util.List;
 import java.util.Objects;
+
 import static java.util.Objects.isNull;
 
 @RestController
-@RequestMapping("/savings-rules")
+@RequestMapping("/savings-transfer")
 public class SavingsTransferRestService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SavingsTransferRestService.class);
@@ -26,25 +27,34 @@ public class SavingsTransferRestService {
     }
 
     @GetMapping("/{userId}")
-    public ResponseEntity<List<SavingsTransfer>> getSavingsRule(@PathVariable("userId") Long userId) {
+    public ResponseEntity<List<SavingsTransfer>> getSavingsTransfers(@PathVariable("userId") Long userId) {
         if (!isNull(userId)) {
             LOGGER.info("Attempt to fetch savingsRule(s) for user {} ", userId);
             List<SavingsTransfer> savingsTransfers = savingsTransferService.getSavingsTransfers(userId);
-            ResponseEntity.ok(savingsTransfers);
+            return ResponseEntity.ok(savingsTransfers);
+        }
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+
+    @GetMapping("/{id}/{userId}")
+    public ResponseEntity<SavingsTransfer> getSavingsTransfer(@PathVariable("id") Long id, @PathVariable("userId") Long userId) {
+        if (!isNull(userId) && !isNull(id)) {
+            LOGGER.info("Attempt to fetch savingsRule {} for user {} ", id, userId);
+            SavingsTransfer savingsTransfer = savingsTransferService.getSavingsTransfer(id, userId);
+            return ResponseEntity.ok(savingsTransfer);
         }
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     @PostMapping
     ResponseEntity<String> persistSavingsTransfer(@RequestBody SavingsTransfer savingsTransfer) {
-        if (!isNull(savingsTransfer)) {
-            LOGGER.info("Attempt to persist savingsRule");
-            savingsRulesService.persistSavingsRule(savingsRule);
+        if (!isNull(savingsTransfer.getId())) {
+            LOGGER.info("Attempt to persist savingsTransfer");
+            savingsTransferService.persistSavings(savingsTransfer);
             return new ResponseEntity<>(HttpStatus.CREATED);
         } else {
             LOGGER.info("Cannot persist null savingsRule!");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
-
 }

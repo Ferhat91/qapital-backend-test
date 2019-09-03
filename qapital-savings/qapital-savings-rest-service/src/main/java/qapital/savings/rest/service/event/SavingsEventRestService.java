@@ -1,4 +1,4 @@
-package qapital.savings.rest.service;
+package qapital.savings.rest.service.event;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,21 +25,31 @@ public class SavingsEventRestService {
 
     @GetMapping("/{userId}")
     public ResponseEntity<List<SavingsEvent>> getSavingsEvents(@PathVariable("userId") Long userId) {
-        if(!isNull(userId)){
+        if (!isNull(userId)) {
             LOGGER.info("Attempt to fetch savingsEvents for user {} ", userId);
             List<SavingsEvent> savingsEvents = savingsEventService.getSavingsEvents(userId);
-            ResponseEntity.ok(savingsEvents);
+            return ResponseEntity.ok(savingsEvents);
+        }
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+
+    @GetMapping("/{id}/{userId}")
+    public ResponseEntity<SavingsEvent> getSavingsEvent(@PathVariable("id") Long id, @PathVariable("userId") Long userId) {
+        if (!isNull(userId) && !isNull(id)) {
+            LOGGER.info("Attempt to fetch savingsEvent {} for user {} ", id, userId);
+            SavingsEvent savingsEvent = savingsEventService.getSavingsEvent(id, userId);
+            return ResponseEntity.ok(savingsEvent);
         }
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     @PostMapping
-    ResponseEntity<String> persistSavingsEvent(@RequestBody SavingsEvent savingsEvent){
-        if(!isNull(savingsEvent)){
+    ResponseEntity<String> persistSavingsEvent(@RequestBody SavingsEvent savingsEvent) {
+        if (!isNull(savingsEvent)) {
             LOGGER.info("Attempt to persist savingsEvent");
             savingsEventService.persistSavingsEvent(savingsEvent);
             return new ResponseEntity<>(HttpStatus.CREATED);
-        } else{
+        } else {
             LOGGER.info("Cannot persist null savingsEvent!");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }

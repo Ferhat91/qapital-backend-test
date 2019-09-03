@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet:
+      id: db.changelog-4.0
+      author: savings-service
+      changes:
+        - sql:
+            sql: insert into savings_rule (id, user_id, savings_goal_id, rule_type, status, amount, description) values ('1', '1', '1', 'GUILTY_PLEASURE', 'ACTIVE', '3.00','Starbucks')
+        - sql:
+            sql: insert into savings_rule (id, user_id, savings_goal_id, rule_type, status, amount) values ('2', '1', '1', 'ROUND_UP', 'ACTIVE', '2.00')

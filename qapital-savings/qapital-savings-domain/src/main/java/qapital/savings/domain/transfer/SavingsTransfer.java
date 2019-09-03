@@ -18,6 +18,9 @@ public class SavingsTransfer implements Serializable {
        this.transactionExecutionTime = builder.transactionExecutionTime;
     }
 
+    private SavingsTransfer(){
+    }
+
     public static Builder builder(){
         return new Builder();
     }

@@ -1,15 +1,15 @@
-package qapital.savings.dao;
+package qapital.savings.dao.rule;
 
 import org.jdbi.v3.core.Jdbi;
 import org.jdbi.v3.sqlite3.SQLitePlugin;
 import org.jdbi.v3.sqlobject.SqlObjectPlugin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import qapital.savings.domain.event.SavingsEvent;
-
+import qapital.savings.domain.rule.SavingsRule;
 import javax.sql.DataSource;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 public class SavingsRuleDaoImpl implements SavingsRuleDao{
 
@@ -24,12 +24,29 @@ public class SavingsRuleDaoImpl implements SavingsRuleDao{
     }
 
     @Override
-    public List<SavingsEvent> getSavingsEvents() {
-        return null;
+    public List<SavingsRule> getSavingsRules(Long userId) {
+        List<SavingsRule> savingsRule = jdbi.withExtension(SavingsRuleDao.class, dao -> dao.getSavingsRules(userId));
+        LOGGER.info("Successfully fetched {} savingRule(s) for userId: {}", savingsRule.size(), userId);
+        return savingsRule;
     }
 
     @Override
-    public void persistSavingsEvent(SavingsEvent savingsEvent) {
+    public List<SavingsRule> getSavingsRules() {
+        List<SavingsRule> savingsRule = jdbi.withExtension(SavingsRuleDao.class, dao -> dao.getSavingsRules());
+        LOGGER.info("Successfully fetched {} savingRule(s)", savingsRule.size());
+        return savingsRule;
+    }
 
+    @Override
+    public Optional<SavingsRule> getSavingsRule(Long userId, Long id) {
+        Optional<SavingsRule> savingsRule = jdbi.withExtension(SavingsRuleDao.class, dao -> dao.getSavingsRule(userId, id));
+        LOGGER.info("Successfully fetched savingRule {} for userId: {}", id, userId);
+        return savingsRule;
+    }
+
+    @Override
+    public void persistSavingsRule(SavingsRule savingsRule) {
+        LOGGER.info("Storing savingsRule {} for userId {}", savingsRule.getId(), savingsRule.getUserId());
+        jdbi.open().attach(SavingsRuleDao.class).persistSavingsRule(savingsRule);
     }
 }

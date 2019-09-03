@@ -9,4 +9,6 @@ public interface SavingsTransferService {
     void persistSavings(SavingsTransfer savingsTransfer);
 
     List<SavingsTransfer> getSavingsTransfers(Long userId);
+
+    SavingsTransfer getSavingsTransfer(Long id, Long userId);
 }

@@ -18,21 +18,22 @@
     <dependencies>
         <dependency>
             <groupId>com.qapital.savings</groupId>
-            <artifactId>qapital-savings-domain</artifactId>
+            <artifactId>qapital-savings-dao</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.qapital.transactions</groupId>
-            <artifactId>qapital-transactions-service</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>28.0-jre</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.qapital.kafka</groupId>
+            <artifactId>kafka-event-subscriber</artifactId>
         </dependency>
     </dependencies>
 

@@ -1,9 +1,8 @@
 package qapital.savings.service.transfer;
 
-
+import qapital.broker.kafka.event.serialization.Mapper;
 import qapital.savings.domain.event.SavingsEvent;
 import qapital.savings.domain.transfer.SavingsTransfer;
-import qapital.savings.service.utility.Mapper;
 import java.util.Optional;
 import static java.util.Objects.isNull;
 
@@ -18,7 +17,6 @@ public class CreateSavingsTransfer {
                     .map(SavingsEvent::getUserId, SavingsTransfer.Builder::withUserId)
                     .map(SavingsEvent::getDate, SavingsTransfer.Builder::withTransactionExecutionTime)
                     .build(SavingsTransfer.Builder::build);
-            assert savingsTransfer != null;
             return Optional.of(savingsTransfer);
         }
         return Optional.empty();

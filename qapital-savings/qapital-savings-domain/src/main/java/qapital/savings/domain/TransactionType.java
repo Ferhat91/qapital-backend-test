@@ -1,4 +1,4 @@
-package qapital.transactions.domain;
+package qapital.savings.domain;
 
 public enum TransactionType {
     MANUAL("MANUAL"),
@@ -11,7 +11,12 @@ public enum TransactionType {
     INTERNAL_TRANSFER("INTERNAL_TRANSFER"),
     CANCELLATION("CANCELLATION"),
     INCENTIVE_PAYOUT("INCENTIVE_PAYOUT"),
-    INTEREST("INTEREST");
+    INTEREST("INTEREST"),
+    UNKNOWN("UNKNOWN");
+
+    public String getTransactionTypeValue() {
+        return transactionTypeValue;
+    }
 
     private String transactionTypeValue;
 

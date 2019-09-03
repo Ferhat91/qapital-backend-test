@@ -1,4 +1,4 @@
-package qapital.savings.dao.mapper;
+package qapital.savings.dao;
 
 public class SavingsDatabaseUtility {
 
@@ -12,11 +12,17 @@ public class SavingsDatabaseUtility {
 
     public static final String SAVINGS_GOAL_ID = "savings_goal_id";
 
+    public static final String SAVINGS_EVENT_ID = "savings_event_id";
+
     public static final String SAVINGS_RULE_ID = "savings_rule_id";
 
     public static final String SAVINGS_TRANSFER_ID = "savings_transfer_id";
 
     public static final String TRIGGER_ID = "trigger_id";
+
+    public static final String TRANSACTION_EXECUTION_TIME = "transaction_execution_time";
+
+    public static final String DATE = "date";
 
     public static final String CREATED = "created";
 

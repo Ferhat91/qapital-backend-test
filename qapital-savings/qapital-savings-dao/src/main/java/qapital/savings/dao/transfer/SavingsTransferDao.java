@@ -12,9 +12,12 @@ import java.util.List;
 public interface SavingsTransferDao {
 
     @SqlUpdate("INSERT into 'savings_transfer' (id, user_id , savings_event_id, transaction_execution_time) " +
-            "VALUES (:id, :user_id , :savings_event_id, :transaction_execution_time)")
+            "VALUES (:id, :userId , :savingsEventId, :transactionExecutionTime)")
     void persistSavings(@BindBean SavingsTransfer savingsTransfer);
 
-    @SqlQuery("SELECT * FROM 'savings_transfer' WHERE user_id = userId")
+    @SqlQuery("SELECT * FROM 'savings_transfer' WHERE user_id = :userId")
     List<SavingsTransfer> getSavingsTransfers(@Bind("userId") Long userId);
+
+    @SqlQuery("SELECT * FROM 'savings_transfer' WHERE id = :id AND user_id = :userId")
+    SavingsTransfer getSavingsTransfer(@Bind("id") Long id, @Bind("userId") Long userId);
 }

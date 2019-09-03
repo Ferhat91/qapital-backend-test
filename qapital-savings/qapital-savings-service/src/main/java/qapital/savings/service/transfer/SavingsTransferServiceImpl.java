@@ -23,4 +23,10 @@ public class SavingsTransferServiceImpl implements SavingsTransferService {
         List<SavingsTransfer> savingsTransfers = savingsTransferDao.getSavingsTransfers(userId);
         return savingsTransfers;
     }
+
+    @Override
+    public SavingsTransfer getSavingsTransfer(Long id, Long userId) {
+        SavingsTransfer savingsTransfer = savingsTransferDao.getSavingsTransfer(id, userId);
+        return savingsTransfer;
+    }
 }

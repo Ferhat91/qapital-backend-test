@@ -7,7 +7,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 
 /**
- * A Savings Event represents an qapital.savings.domain.event in the history of a Savings Goal.
+ * A Savings Event represents an qapital.rule.domain.event in the history of a Savings Goal.
  * Events can be either monetary (triggered by the application of Savings Rules,
  * manual transfers, interest payments or incentive payouts), or other events
  * of significance in the history of the goal, such as pausing or unpausing
@@ -18,21 +18,21 @@ public class SavingsEvent implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Double 			amount;
-	private Boolean 		cancelled;
-	private Instant 		created;
+	private Boolean 		cancellation;
+	private String 			created;
 	private EventType 		eventType;
-	private LocalDate 		date;
+	private String 			date;
 	private Long 			id;
 	private Long 			savingsGoalId;
+	private Long 			savingsTransferId;
 	private Long 			savingsRuleId;
 	private Long 			triggerId;
 	private Long 			userId;
 	private RuleType 		ruleType;
-	private Long 			savingsTransferId;
 
 	private SavingsEvent(Builder builder) {
 		this.amount = builder.amount;
-		this.cancelled = builder.cancelled;
+		this.cancellation = builder.cancellation;
 		this.created = builder.created;
 		this.eventType = builder.eventType;
 		this.date = builder.date;
@@ -52,11 +52,11 @@ public class SavingsEvent implements Serializable {
 		return new Builder();
 	}
 
-	public Boolean getCancelled() {
-		return cancelled;
+	public Boolean getCancellation() {
+		return cancellation;
 	}
 
-	public Instant getCreated() {
+	public String getCreated() {
 		return created;
 	}
 
@@ -64,7 +64,7 @@ public class SavingsEvent implements Serializable {
 		return eventType;
 	}
 
-	public LocalDate getDate() {
+	public String getDate() {
 		return date;
 	}
 
@@ -99,39 +99,39 @@ public class SavingsEvent implements Serializable {
 	public static class Builder implements org.apache.commons.lang3.builder.Builder<SavingsEvent>{
 
 		private Double 		amount;
-		private Boolean 	cancelled;
-		private Instant 	created;
+		private Boolean 	cancellation;
+		private String 		created;
 		private EventType	eventType;
-		private LocalDate date;
-		private Long 			id;
-		private Long 			savingsGoalId;
-		private Long 			savingsRuleId;
-		private Long 			triggerId;
-		private Long 			userId;
+		private String 		date;
+		private Long 		id;
+		private Long 		savingsGoalId;
+		private Long 		savingsRuleId;
+		private Long 		triggerId;
+		private Long 		userId;
 		private RuleType 	ruleType;
-		private Long 			savingsTransferId;
+		private Long 		savingsTransferId;
 
 		public Builder withAmount(Double amount){
 			this.amount = amount;
 			return this;
 		}
 
-		public Builder withCancelled(Boolean cancelled){
-			this.cancelled = cancelled;
+		public Builder withCancellation(Boolean cancellation){
+			this.cancellation = cancellation;
 			return this;
 		}
 
-		public Builder withCreated(Instant created){
+		public Builder withCreated(String created){
 			this.created = created;
 			return this;
 		}
 
-		public Builder withEventName(EventType eventType){
+		public Builder withEventType(EventType eventType){
 			this.eventType = eventType;
 			return this;
 		}
 
-		public Builder withDate(LocalDate date){
+		public Builder withDate(String date){
 			this.date = date;
 			return this;
 		}
@@ -181,14 +181,6 @@ public class SavingsEvent implements Serializable {
 			return 0d;
 		} else {
 			return amount;
-		}
-	}
-
-	public boolean isCancelled() {
-		if (cancelled == null) {
-			return false;
-		} else {
-			return cancelled;
 		}
 	}
 }

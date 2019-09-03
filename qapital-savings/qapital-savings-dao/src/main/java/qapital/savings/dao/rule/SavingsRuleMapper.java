@@ -1,7 +1,8 @@
-package qapital.savings.dao.mapper;
+package qapital.savings.dao.rule;
 
 import org.jdbi.v3.core.mapper.RowMapper;
 import org.jdbi.v3.core.statement.StatementContext;
+import qapital.savings.dao.SavingsDatabaseUtility;
 import qapital.savings.domain.rule.RuleType;
 import qapital.savings.domain.rule.SavingsRule;
 import qapital.savings.domain.rule.Status;
@@ -19,8 +20,7 @@ public class SavingsRuleMapper  implements RowMapper<SavingsRule> {
                 .withAmount(rs.getDouble(SavingsDatabaseUtility.AMOUNT))
                 .withRuleType(RuleType.valueOf(rs.getString(SavingsDatabaseUtility.RULE_TYPE)))
                 .withStatus(Status.valueOf(rs.getString(SavingsDatabaseUtility.STATUS)))
-//                .withSavingGoalIds()
+                .withSavingGoalId(rs.getLong(SavingsDatabaseUtility.SAVINGS_GOAL_ID))
                 .build();
     }
-
 }
