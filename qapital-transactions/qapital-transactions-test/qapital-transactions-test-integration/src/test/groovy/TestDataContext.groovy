@@ -1,29 +1,21 @@
 import org.json.JSONObject
+import qapital.transactions.domain.TransactionType
 import java.sql.Timestamp
 import java.text.SimpleDateFormat
 import java.time.Instant
-import java.util.stream.Stream
 import static org.apache.commons.lang3.RandomStringUtils.randomNumeric
 
 trait TestDataContext {
-
-    static makeTransactions() {
-        Long amountOfRandomTransactionsToCreate = Math.abs(new Random().nextInt(100).toLong())
-        def transactions = Stream.iterate(0, { n -> n + 1 })
-                .limit(amountOfRandomTransactionsToCreate)
-                .map({ element -> makeTransaction() })
-                .collect()
-        return transactions
-    }
 
     static makeTransaction() {
         def description = transactionDescriptions.get(getRandomIntegerInRange(0, transactionDescriptions.size() - 1))
         return [
                 id           : uniqueRandomNumeric(getRandomIntegerInRange(2, 4)),
-                userId       : getRandomIntegerInRange(1, 10),
+                userId       : 1,
                 executionTime: new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Timestamp.from(Instant.now())),
                 amount       : description == "Salary" ? generatePositiveRandomDouble() : generateNegativeRandomDouble(),
-                description  : description
+                description  : description,
+                type         : TransactionType.RULE_APPLICATION.getTransactionTypeValue(),
         ]
     }
 
@@ -34,6 +26,7 @@ trait TestDataContext {
         actual.put("executionTime", transaction.executionTime)
         actual.put("amount", transaction.amount)
         actual.put("description", transaction.description)
+        actual.put("type", transaction.type)
         return actual
     }
 
@@ -52,7 +45,7 @@ trait TestDataContext {
         return Math.abs(random as Integer)
     }
 
-    static transactionDescriptions = ["Starbucks", "McDonald's", "Apple Itunes", "Salary", "Amazon", "Walmart", "Papa Joe's"]
+    static transactionDescriptions = ["Starbucks", "McDonald's", "Apple Itunes", "Amazon", "Walmart", "Papa Joe's"] //"Salary" for texsting since we are not applying any svingsRules on salary based transacations!
 
     static Integer getRandomIntegerInRange(Integer min, Integer max) {
         if (min >= max) {

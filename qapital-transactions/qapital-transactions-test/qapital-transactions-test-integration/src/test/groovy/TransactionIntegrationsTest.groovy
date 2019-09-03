@@ -6,12 +6,14 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.HttpEntity
 import org.springframework.http.ResponseEntity
 import org.springframework.test.context.junit4.SpringRunner
+import qapital.broker.kafka.starter.KafkaServerApplication
 import static org.springframework.http.HttpStatus.CREATED
-import qapital.transactions.main.TransactionsApp
+import qapital.transactions.main.TransactionsApplication
 import static org.springframework.http.HttpStatus.OK
 
 @SpringBootTest(
-        classes = TransactionsApp.class,
+        classes = [KafkaServerApplication.class,
+                TransactionsApplication.class],
         webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @RunWith(SpringRunner.class)
 class TransactionIntegrationsTest extends IntegrationTestSuite {
@@ -42,23 +44,25 @@ class TransactionIntegrationsTest extends IntegrationTestSuite {
 
         when: "a transaction is persisted"
 
-        def transaction = makeTransaction()
-        def userId = transaction.userId
-        def transactionId = transaction.id
+            def transaction = makeTransaction()
+            def userId = transaction.userId
+            def transactionId = transaction.id
 
-        HttpEntity<String> transactionJsonRequest = createJsonRequest(transaction)
+            HttpEntity<String> transactionJsonRequest = createJsonRequest(transaction)
 
-        ResponseEntity<String> insertResponse =
+            ResponseEntity<String> insertResponse =
                 restTemplate.postForEntity(createUriWithPort() + "/transactions", transactionJsonRequest, String)
 
-        assert insertResponse.statusCode == CREATED
+            assert insertResponse.statusCode == CREATED
 
-        then:"all transactions are fetched for ${userId}"
+        then:
+            "all transactions are fetched for ${userId}"
 
-        ResponseEntity<String> getResponse = restTemplate.getForEntity(createUriWithPort() + "/transactions/${userId}/${transactionId}", String)
+            ResponseEntity<String> getResponse = restTemplate.getForEntity(createUriWithPort() + "/transactions/${userId}/${transactionId}", String)
 
-        assert getResponse.statusCode == OK
-        JSONObject actual = makeJSONActual(transaction)
-        JSONAssert.assertEquals(getResponse.body, actual, false)
+            assert getResponse.statusCode == OK
+            JSONObject actual = makeJSONActual(transaction)
+            JSONAssert.assertEquals(getResponse.body, actual, false)
     }
+
 }

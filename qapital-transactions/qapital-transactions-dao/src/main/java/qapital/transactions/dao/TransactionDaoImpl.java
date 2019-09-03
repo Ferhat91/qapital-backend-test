@@ -44,12 +44,8 @@ public class TransactionDaoImpl implements TransactionDao {
     }
 
     @Override
-    public void storeTransaction(Transaction transaction) {
-        persistTransactions(transaction);
-    }
-
-    private void persistTransactions(Transaction transaction){
+    public void persistTransaction(Transaction transaction) {
         LOGGER.info("Storing transaction {} for userId {}", transaction.getId(), transaction.getUserId());
-        jdbi.open().attach(TransactionDao.class).storeTransaction(transaction);
+        jdbi.open().attach(TransactionDao.class).persistTransaction(transaction);
     }
 }

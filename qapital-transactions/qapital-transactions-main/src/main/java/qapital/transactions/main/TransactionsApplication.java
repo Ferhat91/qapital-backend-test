@@ -6,9 +6,9 @@ import org.springframework.context.annotation.ImportResource;
 
 @SpringBootApplication
 @ImportResource({"classpath:qapital-transactions-rest-service.xml"})
-public class TransactionsApp {
+public class TransactionsApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(TransactionsApp.class, args);
+        SpringApplication.run(TransactionsApplication.class, args);
     }
 }

@@ -23,10 +23,10 @@ public class TransactionsRestService {
     }
 
     @PostMapping
-    ResponseEntity<String> storeTransaction(@RequestBody Transaction transaction){
+    ResponseEntity<String> persistTransaction(@RequestBody Transaction transaction){
         if(!isNull(transaction)){
             LOGGER.info("Attempt to persist transaction");
-            transactionsService.storeTransaction(transaction);
+            transactionsService.persistTransaction(transaction);
             return new ResponseEntity<>(HttpStatus.CREATED);
         } else{
             LOGGER.info("Cannot persist null transaction!");
@@ -57,7 +57,7 @@ public class TransactionsRestService {
     @GetMapping
     @RequestMapping("/{userId}/{transactionId}")
     ResponseEntity<Transaction> getTransaction(@PathVariable("userId") Long userId,
-                                               @PathVariable("transactionId") Long transactionId){
+                                               @PathVariable("transactionId") Long transactionId){ //should be id not trainsactionId
         if(!isNull(userId) && !isNull(transactionId)){
             LOGGER.info("Attempt to fetch transaction: {} for userId: {}", transactionId,userId);
             Transaction transactions = transactionsService.getTransaction(userId, transactionId);

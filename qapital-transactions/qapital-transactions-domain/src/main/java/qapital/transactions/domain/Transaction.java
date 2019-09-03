@@ -6,21 +6,27 @@ public class Transaction implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Double amount;
-    private String executionTime;
-    private String description;
-    private Long id;
-    private Long userId;
+    private Double          amount;
+    private String          executionTime;
+    private String          description;
+    private Long            id;
+    private TransactionType type;
+    private Long            userId;
 
     private Transaction(Builder builder) {
         this.amount = builder.amount;
         this.executionTime = builder.executionTime;
         this.description = builder.description;
         this.id = builder.id;
+        this.type = builder.type;
         this.userId = builder.userId;
     }
 
     private Transaction() {
+    }
+
+    public TransactionType getType() {
+        return type;
     }
 
     public String getDescription() {
@@ -49,11 +55,12 @@ public class Transaction implements Serializable {
 
     public static class Builder implements org.apache.commons.lang3.builder.Builder<Transaction> {
 
-        private Double amount;
-        private String executionTime;
-        private String description;
-        private Long id;
-        private Long userId;
+        private Double          amount;
+        private String          executionTime;
+        private String          description;
+        private Long            id;
+        private TransactionType type;
+        private Long            userId;
 
         public Builder withAmount(Double amount) {
             this.amount = amount;
@@ -72,6 +79,11 @@ public class Transaction implements Serializable {
 
         public Builder withId(Long id) {
             this.id = id;
+            return this;
+        }
+
+        public Builder withTransactionType(TransactionType transactionType) {
+            this.type = transactionType;
             return this;
         }
 

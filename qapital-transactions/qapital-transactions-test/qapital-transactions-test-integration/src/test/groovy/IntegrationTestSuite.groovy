@@ -19,6 +19,6 @@ class IntegrationTestSuite extends Specification implements TestDataContext {
         return new HttpEntity<>(json, headers);
     }
 
-    static createUriWithPort() { return "http://" + "localhost" + ":" + "8080";
+    static createUriWithPort() { return "http://" + "localhost" + ":" + "8082";
     }
 }

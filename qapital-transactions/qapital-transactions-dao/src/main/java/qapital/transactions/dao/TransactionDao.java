@@ -21,6 +21,6 @@ public interface TransactionDao {
     @SqlQuery("SELECT * FROM 'transaction'")
     List<Transaction> getTransactions();
 
-    @SqlUpdate("INSERT INTO 'transaction' (id, user_id, amount, description, execution_time) VALUES (:id, :userId, :amount, :description, :executionTime)")
-    void storeTransaction(@BindBean Transaction transaction);
+    @SqlUpdate("INSERT INTO 'transaction' (id, user_id, amount, description, execution_time, type) VALUES (:id, :userId, :amount, :description, :executionTime, :type)")
+    void persistTransaction(@BindBean Transaction transaction);
 }

@@ -1,6 +1,6 @@
 databaseChangeLog:
   - changeSet:
-      id: changelog-0.0
+      id: db.changelog-0.0
       author: transaction-service
       changes:
         - createTable:
@@ -20,4 +20,7 @@ databaseChangeLog:
                   type: text
               - column:
                   name: execution_time
+                  type: text
+              - column:
+                  name: type
                   type: text
