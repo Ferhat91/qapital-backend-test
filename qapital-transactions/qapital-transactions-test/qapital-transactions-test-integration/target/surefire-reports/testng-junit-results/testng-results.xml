@@ -2,16 +2,16 @@
 <testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Surefire suite" duration-ms="15865" started-at="2019-09-03T21:20:19Z" finished-at="2019-09-03T21:20:35Z">
+  <suite name="Surefire suite" duration-ms="16586" started-at="2019-09-04T19:58:17Z" finished-at="2019-09-04T19:58:33Z">
     <groups>
     </groups>
-    <test name="Surefire test" duration-ms="15865" started-at="2019-09-03T21:20:19Z" finished-at="2019-09-03T21:20:35Z">
+    <test name="Surefire test" duration-ms="16586" started-at="2019-09-04T19:58:17Z" finished-at="2019-09-04T19:58:33Z">
       <class name="TransactionIntegrationsTest">
-        <test-method status="PASS" signature="$spock_feature_1_0(TransactionIntegrationsTest)" name="$spock_feature_1_0" duration-ms="15359" started-at="2019-09-03T21:20:19Z" finished-at="2019-09-03T21:20:35Z">
+        <test-method status="PASS" signature="$spock_feature_1_0(TransactionIntegrationsTest)" name="$spock_feature_1_0" duration-ms="16049" started-at="2019-09-04T19:58:17Z" finished-at="2019-09-04T19:58:33Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- $spock_feature_1_0 -->
-        <test-method status="PASS" signature="$spock_feature_1_1(TransactionIntegrationsTest)" name="$spock_feature_1_1" duration-ms="15435" started-at="2019-09-03T21:20:19Z" finished-at="2019-09-03T21:20:35Z">
+        <test-method status="PASS" signature="$spock_feature_1_1(TransactionIntegrationsTest)" name="$spock_feature_1_1" duration-ms="16162" started-at="2019-09-04T19:58:17Z" finished-at="2019-09-04T19:58:33Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- $spock_feature_1_1 -->
