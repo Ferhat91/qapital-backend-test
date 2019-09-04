@@ -12,7 +12,7 @@ import qapital.transactions.main.TransactionsApplication
 import static org.springframework.http.HttpStatus.OK
 
 @SpringBootTest(
-        classes = [
+        classes = [//KafkaServerApplication.class,
                 TransactionsApplication.class],
         webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @RunWith(SpringRunner.class)
