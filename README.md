@@ -13,4 +13,4 @@ Flow can be tested by:
 2. Start SavingsApp
 3. Run IntegrationTest in transactions-service (without KafkaApp included)
 
-Check logs for SavingsApp or curl it.
+Check logs for SavingsApp or curl it for SavingEvents curl http://localhost:8080/savings-event/
