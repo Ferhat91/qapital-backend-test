@@ -1,9 +1,0 @@
-/Users/ferhatb/qapital-backend-test/qapital-savings/qapital-savings-domain/src/main/java/qapital/savings/domain/rule/Status.java
-/Users/ferhatb/qapital-backend-test/qapital-savings/qapital-savings-domain/src/main/java/qapital/savings/domain/event/EventType.java
-/Users/ferhatb/qapital-backend-test/qapital-savings/qapital-savings-domain/src/main/java/qapital/savings/domain/Transaction.java
-/Users/ferhatb/qapital-backend-test/qapital-savings/qapital-savings-domain/src/main/java/qapital/savings/domain/goal/SavingsGoal.java
-/Users/ferhatb/qapital-backend-test/qapital-savings/qapital-savings-domain/src/main/java/qapital/savings/domain/transfer/SavingsTransfer.java
-/Users/ferhatb/qapital-backend-test/qapital-savings/qapital-savings-domain/src/main/java/qapital/savings/domain/rule/SavingsRule.java
-/Users/ferhatb/qapital-backend-test/qapital-savings/qapital-savings-domain/src/main/java/qapital/savings/domain/event/SavingsEvent.java
-/Users/ferhatb/qapital-backend-test/qapital-savings/qapital-savings-domain/src/main/java/qapital/savings/domain/rule/RuleType.java
-/Users/ferhatb/qapital-backend-test/qapital-savings/qapital-savings-domain/src/main/java/qapital/savings/domain/TransactionType.java

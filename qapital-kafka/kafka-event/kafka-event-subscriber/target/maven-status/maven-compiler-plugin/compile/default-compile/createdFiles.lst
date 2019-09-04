@@ -1,5 +1,0 @@
-qapital/broker/kafka/event/subscriber/KafkaEventSubscriber.class
-qapital/broker/kafka/event/subscriber/Consumer.class
-qapital/broker/kafka/event/subscriber/Initializable.class
-qapital/broker/kafka/event/subscriber/EventSubscriberConfiguration.class
-qapital/broker/kafka/event/subscriber/ConsumerListener.class

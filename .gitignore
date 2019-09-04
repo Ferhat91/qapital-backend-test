@@ -1,4 +1,3 @@
-/qapital-backend-test.iml
-/.idea
-/target
-§
+**/target
+**/*.iml
+**/*.idea
