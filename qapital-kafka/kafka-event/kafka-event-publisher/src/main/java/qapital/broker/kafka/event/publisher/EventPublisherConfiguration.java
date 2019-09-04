@@ -9,7 +9,7 @@ import static java.util.Objects.isNull;
 public class EventPublisherConfiguration implements Configurable {
 
     private static final String TOPIC = "topic";
-    private Map<String,?> properties;
+    private Map<String,?> configuration;
 
     public EventPublisherConfiguration(Map<String, ?> properties) {
         configure(properties);
@@ -17,41 +17,41 @@ public class EventPublisherConfiguration implements Configurable {
 
     @Override
     public void configure(Map<String, ?> configurations) {
-        this.properties = Objects.requireNonNull(configurations, "kafkaConsumerConfigurations");
+        this.configuration= Objects.requireNonNull(configurations, "kafkaConsumerConfigurations");
     }
 
     public Boolean isNotEmpty(){
-        return !isNull(properties) && properties.size() > 0;
+        return !isNull(configuration) && configuration.size() > 0;
     }
 
     public String getBootStrapServers(){
-        return String.valueOf(properties.get(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG));
+        return String.valueOf(configuration.get(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG));
     }
 
     public String getClientId(){
-        return String.valueOf(properties.get(ProducerConfig.CLIENT_ID_CONFIG));
+        return String.valueOf(configuration.get(ProducerConfig.CLIENT_ID_CONFIG));
     }
 
     public String getTopic(){
-        return String.valueOf(properties.get(TOPIC));
+        return String.valueOf(configuration.get(TOPIC));
     }
 
     public String getProducerKeySerializer(){
-        return String.valueOf(properties.get(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG));
+        return String.valueOf(configuration.get(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG));
     }
     public String getProducerKeyValueSerializer(){
-        return String.valueOf(properties.get(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG));
+        return String.valueOf(configuration.get(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG));
     }
 
     public Integer getBatchSize(){
-        return (Integer) properties.get(ProducerConfig.BATCH_SIZE_CONFIG);
+        return (Integer) configuration.get(ProducerConfig.BATCH_SIZE_CONFIG);
     }
 
     public Integer getReConnectBackOffMax(){
-        return (Integer)properties.get(ProducerConfig.RECONNECT_BACKOFF_MAX_MS_CONFIG);
+        return (Integer)configuration.get(ProducerConfig.RECONNECT_BACKOFF_MAX_MS_CONFIG);
     }
 
     public Integer getReConnectBackOff(){
-        return (Integer)properties.get(ProducerConfig.RECONNECT_BACKOFF_MS_CONFIG);
+        return (Integer)configuration.get(ProducerConfig.RECONNECT_BACKOFF_MS_CONFIG);
     }
 }

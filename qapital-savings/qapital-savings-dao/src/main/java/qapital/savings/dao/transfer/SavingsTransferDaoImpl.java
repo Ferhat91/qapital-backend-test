@@ -6,7 +6,6 @@ import org.jdbi.v3.sqlobject.SqlObjectPlugin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import qapital.savings.domain.transfer.SavingsTransfer;
-
 import javax.sql.DataSource;
 import java.util.List;
 import java.util.Objects;

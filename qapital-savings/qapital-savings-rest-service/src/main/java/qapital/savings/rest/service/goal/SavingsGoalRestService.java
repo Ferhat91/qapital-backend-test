@@ -7,10 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import qapital.savings.domain.goal.SavingsGoal;
 import qapital.savings.service.goal.SavingsGoalService;
-
 import java.util.List;
 import java.util.Objects;
-
 import static java.util.Objects.isNull;
 
 @RestController

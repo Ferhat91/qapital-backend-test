@@ -6,7 +6,7 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-// SHOULD BE PUT IN A SEPARATE UTILITY COMMON module and not here in service!!
+// This class should be resided in a common-utility module and not here in the service layer
 
 /**
  * A mapper class that maps between two instance, the source instance and the target instance.

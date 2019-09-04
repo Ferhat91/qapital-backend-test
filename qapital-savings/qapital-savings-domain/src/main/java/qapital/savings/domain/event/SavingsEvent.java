@@ -1,10 +1,7 @@
 package qapital.savings.domain.event;
 
 import qapital.savings.domain.rule.RuleType;
-
 import java.io.Serializable;
-import java.time.Instant;
-import java.time.LocalDate;
 
 /**
  * A Savings Event represents an qapital.rule.domain.event in the history of a Savings Goal.

@@ -3,8 +3,6 @@ package qapital.broker.kafka.event.serialization;
 
 import com.qapital.broker.kafka.event.EventWrapperOuterClass;
 import org.apache.kafka.common.serialization.Deserializer;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import java.util.Map;
 
 /**

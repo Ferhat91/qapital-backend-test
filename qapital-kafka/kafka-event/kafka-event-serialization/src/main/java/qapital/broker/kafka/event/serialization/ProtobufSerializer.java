@@ -1,9 +1,6 @@
 package qapital.broker.kafka.event.serialization;
 
-import com.qapital.broker.kafka.event.EventWrapperOuterClass;
-
 import java.lang.reflect.Method;
-import java.util.Map;
 import java.util.Objects;
 
 public class ProtobufSerializer implements Serializer {

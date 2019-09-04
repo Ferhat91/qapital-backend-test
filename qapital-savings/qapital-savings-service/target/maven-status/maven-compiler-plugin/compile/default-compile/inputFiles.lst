@@ -9,8 +9,6 @@
 /Users/ferhatb/qapital-backend-test/qapital-savings/qapital-savings-service/src/main/java/qapital/savings/service/event/SavingsEventServiceImpl.java
 /Users/ferhatb/qapital-backend-test/qapital-savings/qapital-savings-service/src/main/java/qapital/savings/service/event/CreateSavingsEvent.java
 /Users/ferhatb/qapital-backend-test/qapital-savings/qapital-savings-service/src/main/java/qapital/savings/service/rule/SavingsRuleServiceImpl.java
-/Users/ferhatb/qapital-backend-test/qapital-savings/qapital-savings-service/src/main/java/qapital/savings/service/rule/SavingsRulesTemplate.java
-/Users/ferhatb/qapital-backend-test/qapital-savings/qapital-savings-service/src/main/java/qapital/savings/service/utility/CloneBuilder.java
 /Users/ferhatb/qapital-backend-test/qapital-savings/qapital-savings-service/src/main/java/qapital/savings/service/event/SavingsEventService.java
 /Users/ferhatb/qapital-backend-test/qapital-savings/qapital-savings-service/src/main/java/qapital/savings/service/goal/SavingsGoalServiceImpl.java
 /Users/ferhatb/qapital-backend-test/qapital-savings/qapital-savings-service/src/main/java/qapital/savings/service/rule/SavingsRulesService.java

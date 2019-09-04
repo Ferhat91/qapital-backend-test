@@ -30,7 +30,7 @@ public class KafkaEventPublisher implements EventPublisher, AutoCloseable, Initi
         if (producer != null) {
             throw new IllegalStateException("The producer has already been initialized");
         }
-        if(!isNull(eventPublisherConfiguration.getTopic())
+        if(eventPublisherConfiguration.isNotEmpty() && !isNull(eventPublisherConfiguration.getTopic())
                 && !isNull(eventPublisherConfiguration.getTopic())
                 && !isNull(eventPublisherConfiguration.getClientId())){
             producer = new Producer(
@@ -56,7 +56,6 @@ public class KafkaEventPublisher implements EventPublisher, AutoCloseable, Initi
 
     @Override
     public void publish(Object event) {
-
         if (isNull(producer)) {
             LOGGER.error("Producer is null! Did you forget to call init on the publisher?");
         }

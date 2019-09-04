@@ -8,10 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import qapital.savings.domain.transfer.SavingsTransfer;
 import qapital.savings.service.transfer.SavingsTransferService;
-
 import java.util.List;
 import java.util.Objects;
-
 import static java.util.Objects.isNull;
 
 @RestController

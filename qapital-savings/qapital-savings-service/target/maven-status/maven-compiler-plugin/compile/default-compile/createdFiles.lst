@@ -6,7 +6,6 @@ qapital/savings/service/event/TransactionMapper$1.class
 qapital/savings/service/transfer/SavingsTransferService.class
 qapital/savings/service/event/SavingsEventServiceImpl.class
 qapital/savings/service/utility/IdGenerator.class
-qapital/savings/service/utility/CloneBuilder.class
 qapital/savings/service/event/TransactionMapper.class
 qapital/savings/service/transfer/CreateSavingsTransfer.class
 qapital/savings/service/event/CreateSavingsEvent$1.class
@@ -14,5 +13,4 @@ qapital/savings/service/event/TransactionConsumerListenerImpl.class
 qapital/savings/service/rule/SavingsRulesService.class
 qapital/savings/service/goal/SavingsGoalService.class
 qapital/savings/service/rule/SavingsRuleServiceImpl.class
-qapital/savings/service/rule/SavingsRulesTemplate.class
 qapital/savings/service/transfer/SavingsTransferServiceImpl.class

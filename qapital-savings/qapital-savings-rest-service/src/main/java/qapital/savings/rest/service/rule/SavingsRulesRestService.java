@@ -10,7 +10,6 @@ import qapital.savings.service.rule.SavingsRulesService;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-
 import static java.util.Objects.isNull;
 
 @RestController

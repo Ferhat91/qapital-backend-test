@@ -3,8 +3,6 @@ package qapital.savings.service.event;
 import com.qapital.broker.kafka.event.EventWrapperOuterClass;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.kafka.annotation.KafkaHandler;
-import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.transaction.annotation.Transactional;
 import qapital.broker.kafka.event.serialization.ProtobufSerializer;
 import qapital.broker.kafka.event.serialization.Serializer;
@@ -49,7 +47,7 @@ public class TransactionConsumerListenerImpl implements ConsumerListener {
 
         com.qapital.transaction.event.Transaction.TransactionCreatedEvent transactionEvent = serializer.deserialize(message.getType(), message.getData().toByteArray());
         Transaction transaction = TransactionMapper.map(transactionEvent);
-
+        // We should fetch the transaction by the subscribed transactionId from the message and call the API of transaction-service (not the DB!)
         LOGGER.info("transaction: {} was subscribed at {} for user: {}", transaction.getId(), Instant.now(), transaction.getUserId());
         List<SavingsRule> savingsRules = savingsRuleDao.getSavingsRules(transaction.getUserId());
 

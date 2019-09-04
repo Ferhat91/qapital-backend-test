@@ -35,29 +35,25 @@ public class Consumer implements Runnable {
         this.listener = Objects.requireNonNull(listener);
     }
 
-    public KafkaConsumer<String, EventWrapperOuterClass.EventWrapper> init() {
+    public void init() {
         Properties configProperties = new Properties();
         configProperties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, eventSubscriberConfiguration.getBootStrapServers());
-        configProperties.put(ConsumerConfig.CLIENT_ID_CONFIG, eventSubscriberConfiguration.getClientId());
         configProperties.put(ConsumerConfig.GROUP_ID_CONFIG, eventSubscriberConfiguration.getGroupId());
         this.kafkaConsumer = new KafkaConsumer<>(configProperties, this.keyDeserializer, this.valueDeserializer);
         this.kafkaConsumer.subscribe(Collections.singletonList(eventSubscriberConfiguration.getTopic()));
-        return this.kafkaConsumer;
-}
+    }
 
     @Override
     public void run() {
         try {
             init();
             while (running.get()) {
-
-                ConsumerRecords<String, EventWrapperOuterClass.EventWrapper> records = kafkaConsumer.poll(Duration.ofMillis(Long.valueOf(eventSubscriberConfiguration.getPollMaxDuration())));
+                ConsumerRecords<String, EventWrapperOuterClass.EventWrapper> records = kafkaConsumer.poll(Duration.ofMillis(Long.valueOf(eventSubscriberConfiguration.getMaxPollIntervalMs())));
                 for (ConsumerRecord<String, EventWrapperOuterClass.EventWrapper> record : records) {
                     listener.onNext(record.value());
                 }
             }
         } catch (WakeupException exception) {
-            // Ignore exception if closing
             if (running.get()) {
                 throw exception;
             }
@@ -69,7 +65,11 @@ public class Consumer implements Runnable {
             listener.onError(throwable);
         } finally {
             listener.onClose();
-            kafkaConsumer.close();
         }
+    }
+
+    public void shutdown() {
+        running.set(false);
+        kafkaConsumer.wakeup();
     }
 }

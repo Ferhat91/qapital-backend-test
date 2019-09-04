@@ -2,27 +2,27 @@
 <testng-results skipped="0" failed="0" ignored="0" total="4" passed="4">
   <reporter-output>
   </reporter-output>
-  <suite name="Surefire suite" duration-ms="16915" started-at="2019-09-03T15:14:40Z" finished-at="2019-09-03T15:14:57Z">
+  <suite name="Surefire suite" duration-ms="13002" started-at="2019-09-03T21:19:38Z" finished-at="2019-09-03T21:19:51Z">
     <groups>
     </groups>
-    <test name="Surefire test" duration-ms="16915" started-at="2019-09-03T15:14:40Z" finished-at="2019-09-03T15:14:57Z">
+    <test name="Surefire test" duration-ms="13002" started-at="2019-09-03T21:19:38Z" finished-at="2019-09-03T21:19:51Z">
       <class name="SavingsIntegrationsTest">
-        <test-method status="PASS" signature="$spock_feature_1_0(SavingsIntegrationsTest)" name="$spock_feature_1_0" duration-ms="16144" started-at="2019-09-03T15:14:40Z" finished-at="2019-09-03T15:14:56Z">
+        <test-method status="PASS" signature="$spock_feature_1_0(SavingsIntegrationsTest)" name="$spock_feature_1_0" duration-ms="12495" started-at="2019-09-03T21:19:38Z" finished-at="2019-09-03T21:19:51Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- $spock_feature_1_0 -->
-        <test-method status="PASS" signature="$spock_feature_1_1(SavingsIntegrationsTest)" name="$spock_feature_1_1" duration-ms="16213" started-at="2019-09-03T15:14:40Z" finished-at="2019-09-03T15:14:57Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- $spock_feature_1_1 -->
-        <test-method status="PASS" signature="$spock_feature_1_2(SavingsIntegrationsTest)" name="$spock_feature_1_2" duration-ms="16285" started-at="2019-09-03T15:14:40Z" finished-at="2019-09-03T15:14:57Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- $spock_feature_1_2 -->
-        <test-method status="PASS" signature="$spock_feature_1_3(SavingsIntegrationsTest)" name="$spock_feature_1_3" duration-ms="16333" started-at="2019-09-03T15:14:40Z" finished-at="2019-09-03T15:14:57Z">
+        <test-method status="PASS" signature="$spock_feature_1_3(SavingsIntegrationsTest)" name="$spock_feature_1_3" duration-ms="12664" started-at="2019-09-03T21:19:38Z" finished-at="2019-09-03T21:19:51Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- $spock_feature_1_3 -->
+        <test-method status="PASS" signature="$spock_feature_1_1(SavingsIntegrationsTest)" name="$spock_feature_1_1" duration-ms="12555" started-at="2019-09-03T21:19:38Z" finished-at="2019-09-03T21:19:51Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- $spock_feature_1_1 -->
+        <test-method status="PASS" signature="$spock_feature_1_2(SavingsIntegrationsTest)" name="$spock_feature_1_2" duration-ms="12616" started-at="2019-09-03T21:19:38Z" finished-at="2019-09-03T21:19:51Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- $spock_feature_1_2 -->
       </class> <!-- SavingsIntegrationsTest -->
     </test> <!-- Surefire test -->
   </suite> <!-- Surefire suite -->
