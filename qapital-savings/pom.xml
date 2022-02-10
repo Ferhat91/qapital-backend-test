@@ -22,7 +22,7 @@
     <properties>
         <commons.lang.version>3.9</commons.lang.version>
         <commonds.dbcp.version>1.4</commonds.dbcp.version>
-        <hibernate.core.version>5.4.3.Final</hibernate.core.version>
+        <hibernate.core.version>5.4.24.Final</hibernate.core.version>
         <maven.compiler.plugin.version>3.3</maven.compiler.plugin.version>
         <spring.boot.version>2.1.6.RELEASE</spring.boot.version>
         <spring.context.version>5.1.8.RELEASE</spring.context.version>
